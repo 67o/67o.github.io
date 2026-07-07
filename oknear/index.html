@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2e7d32; /* Rich Green */
+            --primary-color: #2e7d32; 
             --dark-color: #212121;
             --light-bg: #ffffff;
             --card-bg: #f8f9fa;
@@ -31,7 +31,7 @@
             overflow-x: hidden;
         }
 
-        /* Header / Navbar */
+        /* Header / Navbar Section */
         header {
             background: #ffffff;
             position: sticky;
@@ -52,14 +52,18 @@
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
-        .logo-area img {
-            height: 45px;
-            width: 45px;
-            object-fit: contain;
+        /* CSS-Based Clean Logo Badge - No Image File Needed */
+        .logo-badge {
+            background: var(--primary-color);
+            color: #ffffff;
+            padding: 5px 12px;
             border-radius: 8px;
+            font-weight: 700;
+            font-size: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .logo-text {
@@ -85,15 +89,12 @@
         .hero {
             padding: 80px 20px;
             background: linear-gradient(180deg, #f1f8e9 0%, #ffffff 100%);
+            text-align: center;
         }
 
         .hero-container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 40px;
-            align-items: center;
         }
 
         .hero-text h1 {
@@ -111,38 +112,50 @@
         .hero-text p {
             font-size: 18px;
             color: var(--text-muted);
-            margin-bottom: 35px;
-            max-width: 600px;
+            margin-bottom: 40px;
         }
 
-        /* Clean Play Store Image Button Wrapper */
-        .playstore-btn-wrap {
-            display: inline-block;
-            transition: transform 0.2s ease;
+        /* Clean CSS Google Play Button - Built In-House without Image Breakage */
+        .playstore-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #000000;
+            color: #ffffff;
+            padding: 12px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .playstore-btn-wrap :hover {
-            transform: scale(1.04);
+        .playstore-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
         }
 
-        .playstore-btn-wrap img {
-            height: 55px;
-            width: auto;
-            display: block;
+        .playstore-button i {
+            font-size: 30px;
+            margin-right: 14px;
+            color: #00e676; /* Beautiful Play Store Green Icon Accenting */
         }
 
-        .hero-image {
-            text-align: center;
+        .btn-text {
+            text-align: left;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Main App Feature Screenshot Display */
-        .main-app-screen {
-            max-width: 320px;
-            width: 100%;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-            border: 1px solid var(--border-color);
+        .btn-text .top-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #aaaaaa;
+        }
+
+        .btn-text .main-label {
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.2;
         }
 
         /* Features Section */
@@ -300,20 +313,6 @@
             color: #888888;
         }
 
-        /* Responsive Settings */
-        @media (max-width: 991px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .hero-text p {
-                margin: 0 auto 35px auto;
-            }
-            .hero-image {
-                margin-top: 20px;
-            }
-        }
-
         @media (max-width: 576px) {
             .hero-text h1 {
                 font-size: 32px;
@@ -332,7 +331,7 @@
     <header>
         <div class="nav-container">
             <div class="logo-area">
-                <img src="23918.png" alt="OKnear Icon"> 
+                <div class="logo-badge">OK</div> 
                 <span class="logo-text">OKnear</span>
             </div>
             <nav class="nav-links">
@@ -349,12 +348,13 @@
                 <h1>OKnear - <span>Chamorshi Shop Online</span></h1>
                 <p>Shopping in Chamorshi made effortless! Browse your favorite local stores online and get fast, secure, and authenticated deliveries straight to your doorstep.</p>
                 
-                <a href="https://play.google.com/store/apps/details?id=com.oknear.app" target="_blank" class="playstore-btn-wrap">
-                    <img src="23919.jpg" alt="Get it on Google Play Store">
+                <a href="https://play.google.com/store/apps/details?id=com.oknear.app" target="_blank" class="playstore-button">
+                    <i class="fab fa-google-play"></i>
+                    <div class="btn-text">
+                        <span class="top-label">GET IT ON</span>
+                        <span class="main-label">Google Play</span>
+                    </div>
                 </a>
-            </div>
-            <div class="hero-image">
-                <img src="23922.jpg" class="main-app-screen" alt="OKnear App Delivery Service">
             </div>
         </div>
     </section>
