@@ -13,20 +13,16 @@
         .logo { font-size: 24px; font-weight: bold; color: #0052ff; }
         
         /* Hero Section */
-        .hero { display: flex; align-items: center; justify-content: space-between; padding: 80px 10%; background: linear-gradient(135deg, #fff 0%, #e9ecef 100%); }
-        .hero-text { flex: 1; padding-right: 50px; }
-        .hero-text h1 { font-size: 44px; margin-bottom: 20px; color: #111; }
-        .hero-text p { font-size: 18px; margin-bottom: 30px; color: #666; }
-        .hero-img { flex: 1; text-align: center; display: flex; justify-content: center; }
+        .hero { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 100px 10%; background: linear-gradient(135deg, #fff 0%, #e9ecef 100%); }
+        .hero-text { max-width: 800px; }
+        .hero-text h1 { font-size: 46px; margin-bottom: 20px; color: #111; font-weight: 800; }
+        .hero-text p { font-size: 19px; margin-bottom: 35px; color: #555; }
         
-        /* App Icon - SVG Rendered Exactly like 23920.png */
-        .app-icon-frame { width: 200px; height: 200px; display: block; box-shadow: 0 15px 40px rgba(0,82,255,0.2); border-radius: 44px; }
-
-        /* Official Google Play Button with Genuine Multi-color Vector Branding */
-        .btn-playstore { display: inline-flex; align-items: center; gap: 14px; background: #000; color: #fff; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 15px; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: 1px solid #333; }
+        /* Official Google Play Button (Pure CSS Vector - No Image Needed) */
+        .btn-playstore { display: inline-flex; align-items: center; gap: 14px; background: #000; color: #fff; padding: 12px 32px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 15px; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: 1px solid #333; }
         .btn-playstore:hover { background: #111; transform: translateY(-2px); }
         .play-icon-svg { width: 26px; height: 26px; }
-        .btn-text-wrapper { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.2; }
+        .btn-text-wrapper { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.2; text-align: left; }
         .btn-text-top { font-size: 11px; font-weight: 400; color: #aaa; text-transform: uppercase; letter-spacing: 0.5px; }
         .btn-text-main { font-size: 17px; font-weight: 700; }
 
@@ -46,9 +42,8 @@
         footer a:hover { color: #0052ff; }
         
         @media (max-width: 768px) {
-            .hero { flex-direction: column; text-align: center; padding: 40px 5%; }
-            .hero-text { padding-right: 0; margin-bottom: 40px; }
-            .hero-text h1 { font-size: 32px; }
+            .hero { padding: 60px 5%; }
+            .hero-text h1 { font-size: 34px; }
         }
     </style>
 </head>
@@ -61,7 +56,7 @@
     <section class="hero">
         <div class="hero-text">
             <h1>Appointu: Appointment Booking</h1>
-            <p>Your Appointments, Simplified. A single app with role-based login to seamlessly connect users and local appointment service providers near you.</p>
+            <p>Your Appointments, Simplified. A single, powerful app with role-based login designed to seamlessly connect users and local appointment service providers near you.</p>
             
             <a href="https://play.google.com/store/apps/details?id=com.appointu.app" class="btn-playstore" target="_blank">
                 <svg class="play-icon-svg" viewBox="0 0 512 512">
@@ -75,15 +70,6 @@
                     <span class="btn-text-main">Google Play</span>
                 </div>
             </a>
-        </div>
-        <div class="hero-img">
-            <svg class="app-icon-frame" viewBox="0 0 512 512">
-                <rect width="512" height="512" rx="115" fill="#0052ff"/>
-                <path d="M140 380 L230 140 L282 140 L372 380 L315 380 L295 325 L217 325 L197 380 Z" fill="#ffffff"/>
-                <path d="M228 290 L284 290 L256 210 Z" fill="#0052ff"/>
-                <circle cx="360" cy="350" r="45" fill="#ffffff"/>
-                <path d="M340 350 L353 363 L385 331" fill="none" stroke="#0052ff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
         </div>
     </section>
 
