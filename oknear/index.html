@@ -3,62 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OKnear: Chamorshi Shop Online - Official Page</title>
+    <title>OKnear - Chamorshi Shop Online</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
-        }
-        .container {
-            background: rgba(255, 255, 255, 0.12);
-            padding: 40px;
-            border-radius: 24px;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.35);
-            max-width: 450px;
-            width: 90%;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        h1 {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-            letter-spacing: 0.5px;
-            font-weight: 700;
-        }
-        p {
-            font-size: 1.1rem;
-            opacity: 0.95;
-            line-height: 1.6;
-        }
-        .status-badge {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 6px 16px;
-            border-radius: 50px;
-            display: inline-block;
-            font-size: 0.85rem;
-            margin-top: 15px;
-            font-weight: 600;
-        }
-        .footer {
-            margin-top: 35px;
-            font-size: 0.8rem;
-            opacity: 0.6;
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #fcfcfc; color: #222; line-height: 1.6; }
+        
+        /* Navigation */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 10%; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .logo-text { font-size: 26px; font-weight: bold; color: #28a745; font-style: italic; }
+        
+        /* Hero Section */
+        .hero { display: flex; align-items: center; justify-content: space-between; padding: 80px 10%; background: linear-gradient(135deg, #fff 0%, #f4fdf4 100%); }
+        .hero-text { flex: 1; padding-right: 50px; }
+        .hero-text h1 { font-size: 42px; margin-bottom: 15px; color: #111; font-weight: 800; }
+        .hero-text .tagline { font-size: 20px; color: #28a745; font-weight: 600; margin-bottom: 15px; }
+        .hero-text p { font-size: 17px; margin-bottom: 30px; color: #555; }
+        .hero-img { flex: 1; text-align: center; display: flex; justify-content: center; }
+        
+        /* App Icon Frame matching 23918.png */
+        .app-icon-frame { width: 220px; padding: 20px; background: #fff; border-radius: 40px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); text-align: center; border: 1px solid #f0f0f0; }
+        .app-icon-frame img { width: 100%; height: auto; border-radius: 10px; }
+
+        /* Official Google Play Button */
+        .btn-playstore { display: inline-flex; align-items: center; gap: 12px; background: #000; color: #fff; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 16px; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .btn-playstore:hover { background: #222; transform: translateY(-2px); }
+        .play-icon { width: 22px; height: 22px; }
+
+        /* Delivery Badge Highlight from Screenshot */
+        .badge-container { display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
+        .badge { background: #eef9f2; color: #28a745; padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; border: 1px solid #c3e6cb; display: flex; align-items: center; gap: 6px; }
+
+        /* Features Section */
+        .features { padding: 80px 10%; background: #fff; text-align: center; }
+        .features h2 { font-size: 36px; margin-bottom: 10px; color: #111; }
+        .features .subtitle { color: #666; margin-bottom: 50px; font-size: 18px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; }
+        .card { padding: 30px; background: #fdfdfd; border-radius: 12px; transition: 0.3s; border-top: 4px solid #28a745; text-align: left; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.06); }
+        .card h3 { margin-bottom: 15px; color: #28a745; font-size: 20px; }
+
+        /* Footer */
+        footer { background: #111; color: #fff; text-align: center; padding: 40px 10%; font-size: 14px; }
+        footer p { margin-bottom: 10px; color: #ccc; }
+        footer a { color: #fff; text-decoration: none; margin: 0 10px; font-weight: 600; }
+        footer a:hover { color: #28a745; }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; padding: 40px 5%; }
+            .hero-text { padding-right: 0; margin-bottom: 40px; }
+            .hero-text h1 { font-size: 32px; }
+            .badge-container { justify-content: center; }
+            .hero-img { margin-top: 20px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>OKnear</h1>
-        <p>Welcome to the official page of OKnear: Chamorshi Shop Online Application.</p>
-        <div class="status-badge">Website Under Construction</div>
-        <div class="footer">© 2026 OKnear. All rights reserved.</div>
-    </div>
-</body>
-</html>
+
+    <nav>
+        <div class="logo-text">OKnear</div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>OKnear - Chamorshi Shop Online</h1>
+            <div class="tagline">Your Trusted Local Delivery</div>
+            <p>Shop with confidence from your local cloth stores. Browse trending dresses, kurtis, kids wear, and more. Enjoy a seamless experience built entirely around your comfort and trust.</p>
+            
+            <div class="badge-container">
+                <div class="badge">✓ Open Box Delivery</div>
+                <div class="badge">✓ Easy Rejection</div>
+                <div class="badge">✓ Check Before You Pay</div>
+            </div>
+
+            <a href="https://play.google.com/store/apps/details?id=com.oknear.app" class="btn-playstore" target="_blank">
+                <svg class="play-icon" viewBox="0 0 512 512" fill="white">
+                    <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58 33.3-60.1-60.1 118.1 26.8c12.4 2.8 21.3 13.7 21.3 26.8s-8.9 24-21.3 26.8zM385.4 337.8L104.6 499l220.7-126.5 60.1-60.1z"/>
+                </svg>
+                GET IT ON Google Play
+            </a>
+        </div>
+        
+        <div class="hero-img">
+            <div class="app-icon-frame">
+                <img src="23918.png" alt="OKnear App Icon">
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>Shop Local. Shop Safe.</h2>
+        <p class="subtitle">Bringing your favorite local clothing stores right to your fingertips</p>
+        <div class="grid">
+            <div class="card">
+                <h3>📦 Open Box Delivery</h3>
+                <p>No more blind parcels. Open the box, check your clothing size and quality first, and then pay with total satisfaction.</p>
+            </div>
+            <div class="card">
+                <h3>↩️ Instant Rejection</h3>
+                <p>Not satisfied with the fabrics or look? Reject it easily right at the time of delivery. Completely stress-free process.</p>
+            </div>
+            <div class="card">
+                <h3>📍 Pincode Search</h3>
+                <p>Input your local pincode to browse live catalogs of clothing stores nearest to you for lightning-fast deliveries.</p>
+            </div>
+            <div class="card">
+                <h3>🛡️ Vendor & Spam Shield</h3>
+                <p>Dual role-based dashboard allowing genuine dress shops to upload products smoothly and filter out fake profiles with ease.</p>
+            </div>
+        </div>
+    </
