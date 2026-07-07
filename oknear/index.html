@@ -4,18 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OKnear - Chamorshi Shop Online | Your Trusted Local Delivery</title>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #00c853;
-            --secondary-color: #ff9100;
-            --dark-color: #121212;
-            --card-bg: #1e1e1e;
-            --text-color: #ffffff;
-            --text-muted: #aaaaaa;
+            --primary-color: #2e7d32; /* Rich Green */
+            --dark-color: #212121;
+            --light-bg: #ffffff;
+            --card-bg: #f8f9fa;
+            --text-color: #212121;
+            --text-muted: #666666;
+            --border-color: #e0e0e0;
         }
 
         * {
@@ -26,19 +25,19 @@
         }
 
         body {
-            background-color: var(--dark-color);
+            background-color: var(--light-bg);
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
+        /* Header / Navbar */
         header {
-            background: rgba(18, 18, 18, 0.85);
-            backdrop-filter: blur(10px);
+            background: #ffffff;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid #292929;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .nav-container {
@@ -53,23 +52,21 @@
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
 
         .logo-area img {
             height: 45px;
-            width: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,200,83,0.3);
+            width: 45px;
+            object-fit: contain;
+            border-radius: 8px;
         }
 
         .logo-text {
             font-size: 24px;
             font-weight: 700;
+            color: var(--primary-color);
             letter-spacing: 0.5px;
-            background: linear-gradient(45deg, #ffffff, var(--primary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
 
         .nav-links a {
@@ -84,22 +81,10 @@
             color: var(--primary-color);
         }
 
+        /* Hero Section */
         .hero {
-            padding: 100px 20px 60px 20px;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -10%;
-            left: -10%;
-            width: 400px;
-            height: 400px;
-            background: rgba(0, 200, 83, 0.15);
-            filter: blur(120px);
-            border-radius: 50%;
-            z-index: -1;
+            padding: 80px 20px;
+            background: linear-gradient(180deg, #f1f8e9 0%, #ffffff 100%);
         }
 
         .hero-container {
@@ -112,15 +97,15 @@
         }
 
         .hero-text h1 {
-            font-size: 48px;
+            font-size: 44px;
             font-weight: 700;
             margin-bottom: 20px;
             line-height: 1.2;
+            color: var(--dark-color);
         }
 
         .hero-text h1 span {
             color: var(--primary-color);
-            text-shadow: 0 0 20px rgba(0,200,83,0.2);
         }
 
         .hero-text p {
@@ -130,26 +115,48 @@
             max-width: 600px;
         }
 
-        .playstore-click-box {
+        /* Clean Play Store Image Button Wrapper */
+        .playstore-btn-wrap {
             display: inline-block;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: transform 0.2s ease;
         }
 
-        .playstore-click-box:hover {
-            transform: scale(1.06);
+        .playstore-btn-wrap :hover {
+            transform: scale(1.04);
         }
 
+        .playstore-btn-wrap img {
+            height: 55px;
+            width: auto;
+            display: block;
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        /* Main App Feature Screenshot Display */
+        .main-app-screen {
+            max-width: 320px;
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Features Section */
         .features {
             padding: 80px 20px;
-            position: relative;
+            background: #ffffff;
         }
 
         .section-title {
             text-align: center;
-            font-size: 36px;
+            font-size: 34px;
             font-weight: 700;
             margin-bottom: 50px;
-            letter-spacing: 0.5px;
+            color: var(--dark-color);
         }
 
         .section-title span {
@@ -167,33 +174,34 @@
         .feature-card {
             background: var(--card-bg);
             padding: 40px 30px;
-            border-radius: 20px;
+            border-radius: 16px;
             text-align: center;
-            border: 1px solid #292929;
+            border: 1px solid var(--border-color);
             transition: all 0.3s ease;
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             border-color: var(--primary-color);
-            box-shadow: 0 15px 30px rgba(0, 200, 83, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
         }
 
         .feature-icon {
-            font-size: 45px;
+            font-size: 40px;
             color: var(--primary-color);
             margin-bottom: 20px;
             display: inline-block;
-            background: rgba(0, 200, 83, 0.1);
-            width: 80px;
-            height: 80px;
-            line-height: 80px;
+            background: rgba(46, 125, 50, 0.1);
+            width: 75px;
+            height: 75px;
+            line-height: 75px;
             border-radius: 50%;
         }
 
         .feature-card h3 {
             font-size: 22px;
             margin-bottom: 15px;
+            color: var(--dark-color);
         }
 
         .feature-card p {
@@ -201,42 +209,21 @@
             font-size: 15px;
         }
 
-        .app-showcase {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .app-showcase img {
-            width: 220px;
-            height: auto;
-            border-radius: 15px;
-            border: 3px solid #292929;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            transition: transform 0.3s;
-        }
-
-        .app-showcase img:hover {
-            transform: scale(1.05) rotate(1deg);
-            border-color: var(--primary-color);
-        }
-
+        /* Business Info Section */
         .business-info {
             padding: 80px 20px;
-            background: #161616;
-            border-top: 1px solid #292929;
-            border-bottom: 1px solid #292929;
+            background: #fdfdfd;
+            border-top: 1px solid var(--border-color);
         }
 
         .info-container {
             max-width: 950px;
             margin: 0 auto;
-            background: var(--card-bg);
+            background: #ffffff;
             padding: 50px 40px;
-            border-radius: 24px;
-            border: 1px solid #292929;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
         }
 
         .info-grid {
@@ -253,15 +240,15 @@
         }
 
         .info-item i {
-            font-size: 24px;
+            font-size: 22px;
             color: var(--primary-color);
-            background: rgba(0, 200, 83, 0.1);
+            background: rgba(46, 125, 50, 0.08);
             padding: 12px;
             border-radius: 12px;
         }
 
         .info-item h4 {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-muted);
             text-transform: uppercase;
             font-weight: 600;
@@ -272,32 +259,33 @@
         .info-item p {
             font-size: 16px;
             font-weight: 600;
-            color: #ffffff;
+            color: var(--dark-color);
         }
 
+        /* Footer Section */
         footer {
-            background: #0d0d0d;
+            background: #1a1a1a;
             color: #ffffff;
-            padding: 60px 20px 30px 20px;
+            padding: 50px 20px 30px 20px;
             text-align: center;
         }
 
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
-            border-bottom: 1px solid #222222;
-            padding-bottom: 40px;
-            margin-bottom: 30px;
+            border-bottom: 1px solid #333333;
+            padding-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .footer-links {
-            margin: 25px 0;
+            margin: 20px 0;
         }
 
         .footer-links a {
-            color: var(--text-muted);
+            color: #cccccc;
             text-decoration: none;
-            margin: 0 20px;
+            margin: 0 15px;
             font-size: 15px;
             transition: color 0.3s;
             font-weight: 500;
@@ -309,9 +297,10 @@
 
         .footer-bottom {
             font-size: 14px;
-            color: #666666;
+            color: #888888;
         }
 
+        /* Responsive Settings */
         @media (max-width: 991px) {
             .hero-container {
                 grid-template-columns: 1fr;
@@ -320,8 +309,8 @@
             .hero-text p {
                 margin: 0 auto 35px auto;
             }
-            .app-showcase {
-                justify-content: center;
+            .hero-image {
+                margin-top: 20px;
             }
         }
 
@@ -340,11 +329,10 @@
 </head>
 <body>
 
-    <!-- Header Section -->
     <header>
         <div class="nav-container">
             <div class="logo-area">
-                <img src="23918.png" alt="OKnear App Icon"> 
+                <img src="23918.png" alt="OKnear Icon"> 
                 <span class="logo-text">OKnear</span>
             </div>
             <nav class="nav-links">
@@ -355,37 +343,22 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-container">
             <div class="hero-text">
                 <h1>OKnear - <span>Chamorshi Shop Online</span></h1>
                 <p>Shopping in Chamorshi made effortless! Browse your favorite local stores online and get fast, secure, and authenticated deliveries straight to your doorstep.</p>
                 
-                <!-- Official Google Play Vector Badge -->
-                <a href="https://play.google.com/store/apps/details?id=com.oknear.app" target="_blank" class="playstore-click-box">
-                    <svg title="Get it on Google Play" viewBox="0 0 647 200" style="height: 60px; width: auto; border-radius: 8px;">
-                        <path d="M0 0h647v200H0z"></path>
-                        <path fill="#a4a4a4" d="M189 74h-28v53h9v-19h18c14 0 22-8 22-17s-7-17-21-17zm-1 26h-18v-17h18c8 0 12 4 12 8s-4 9-12 9zm81-16c-16 0-26 11-26 27s10 27 26 27 26-11 26-27-10-27-26-27zm0 45c-11 0-17-8-17-18s6-18 17-18 17 8 17 18-6 18-17 18zm57-45c-10 0-18 5-21 11h-1v-9h-9v52h9v-18c0-13 6-19 15-19 8 0 12 5 12 13v24h9V93c0-14-8-21-23-21zm72 0c-15 0-25 11-25 27s9 27 25 27c11 0 19-6 22-14h-10c-3 4-7 6-12 6-9 0-14-6-15-13h38c1-2 1-4 1-6 0-16-10-27-24-27zm-16 20c1-7 6-12 15-12 8 0 13 5 14 12h-29zm77-20c-10 0-18 5-22 12h-1c-2-5-7-12-19-12-10 0-17 5-20 11h-1v-9h-9v35h9v-17c0-10 5-16 12-16 7 0 11 5 11 12v21h9v-17c0-10 5-16 12-16 7 0 11 5 11 12v21h9V93c0-14-7-21-21-21zm52 0c-14 0-24 10-24 26 0 15 9 26 23 26 10 0 17-5 21-12h-9c-3 4-7 6-12 6-8 0-13-5-14-12h36c0-2 0-3 0-5 0-16-9-25-21-25zm-15 20c1-7 6-12 14-12 8 0 12 5 13 12h-27zm55-20c-6 0-12 3-15 8h-1v-31h-9v53h9v-19c0-13 6-20 15-20 2 0 4 0 5 1v-9c-2 0-3 0-4 0zm31 0c-4 0-8 2-10 5h-1v-5h-9v35h9v-18c0-11 5-16 12-16 2 0 3 0 4 1v-9c-2 0-4 0-5 0z"></path>
-                        <path fill="#fff" d="M16 150h57v11H16zm0-71h30c18 0 29 10 29 25 0 16-11 25-30 25H16zm12 40h17c11 0 17-5 17-15s-6-15-17-15H28zm74-40c16 0 27 12 27 26s-11 26-27 26c-17 0-27-12-27-26s10-26 27-26zm0 42c10 0 16-8 16-16s-6-16-16-16-15 8-15 16 5 16 15 16zm51-42h13l-24 53h-12zm40 0c16 0 26 12 26 26s-10 26-26 26c-17 0-27-12-27-26s10-26 27-26zm0 42c10 0 16-8 16-16s-6-16-16-16-15 8-15 16 5 16 15 16zm45-42h12v42h24v10h-36zm56 0c15 0 25 11 25 25 0 2-1 4-1 5h-37c1 8 7 14 15 14 6 0 11-3 13-8h11c-4 10-13 16-24 16-17 0-27-12-27-26s10-26 25-26zm14 21c0-7-5-13-13-13-8 0-13 6-14 13zm77-21l-22 51c-4 9-9 14-18 14-3 0-5 0-7-1v-10c2 0 3 1 5 1 5 0 8-3 10-7l2-5-24-43h13l16 36h1l15-36z"></path>
-                        <path fill="#00e676" d="M121.2 81.7l-20.5-20.5c-2.3-2.3-5.7-2.9-8.6-1.7l49.5 49.5 7.8-7.8-28.2-19.5z"></path>
-                        <path fill="#ffeb3b" d="M141.6 109l-49.5-49.5c-1.2 2.9-.6 6.3 1.7 8.6l20.5 20.5 27.3 20.4z"></path>
-                        <path fill="#ff1744" d="M141.6 109l-7.8 7.8-27.3-20.4-20.5 20.5c-2.3 2.3-5.7 2.9-8.6 1.7l64.2-9.6z"></path>
-                        <path fill="#00b0ff" d="M77.4 128.2c2.9 1.2 6.3.6 8.6-1.7l20.5-20.5-29.1-29.1-64.2 9.6z"></path>
-                    </svg>
+                <a href="https://play.google.com/store/apps/details?id=com.oknear.app" target="_blank" class="playstore-btn-wrap">
+                    <img src="23919.jpg" alt="Get it on Google Play Store">
                 </a>
             </div>
             <div class="hero-image">
-                <div class="app-showcase">
-                    <img src="23916.jpg" alt="OKnear Interface 1">
-                    <img src="23919.jpg" alt="OKnear Interface 2">
-                    <img src="23922.jpg" alt="OKnear Interface 3">
-                </div>
+                <img src="23922.jpg" class="main-app-screen" alt="OKnear App Delivery Service">
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
     <section id="features" class="features">
         <h2 class="section-title">Why Choose <span>OKnear</span>?</h2>
         <div class="features-grid">
@@ -407,7 +380,6 @@
         </div>
     </section>
 
-    <!-- Business Info Section -->
     <section id="store-details" class="business-info">
         <div class="info-container">
             <h2 class="section-title" style="margin-bottom: 20px;">Official <span>Store Details</span></h2>
@@ -446,16 +418,14 @@
         </div>
     </section>
 
-    <!-- Footer Section -->
     <footer>
         <div class="footer-content">
-            <h3 style="font-size: 26px; font-weight: 700; color: #ffffff; letter-spacing: 0.5px;">OKnear</h3>
-            <p style="color: var(--text-muted); margin-top: 5px;">Bridging premium local retail directly with consumers seamlessly.</p>
+            <h3 style="font-size: 26px; font-weight: 700; color: #ffffff;">OKnear</h3>
+            <p style="color: #888888; margin-top: 5px;">Bridging premium local retail directly with consumers seamlessly.</p>
             <div class="footer-links">
                 <a href="https://sites.google.com/view/oknearlegal/home" target="_blank">Privacy & Legal Policy</a>
-                <a href="mailto:helpdeskoknear@gmail.com">Contact Support</a>
             </div>
-            <p style="font-size: 15px; color: #ffffff; margin-top: 15px;"><i class="fa-solid fa-envelope" style="color: var(--primary-color); margin-right: 8px;"></i> Support: helpdeskoknear@gmail.com</p>
+            <p style="font-size: 15px; color: #ffffff; margin-top: 15px;"><i class="fa-solid fa-envelope" style="color: var(--primary-color); margin-right: 8px;"></i> Support Email: helpdeskoknear@gmail.com</p>
         </div>
         <div class="footer-bottom">
             &copy; 2026 OKnear. All Rights Reserved. Owned and Operated by SHIVKRUPA COLLECTION.
