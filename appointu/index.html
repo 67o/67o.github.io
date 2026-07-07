@@ -10,7 +10,7 @@
         
         /* Navigation */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 10%; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .logo { font-size: 24px; font-weight: bold; color: #0056b3; }
+        .logo { font-size: 24px; font-weight: bold; color: #0052ff; }
         
         /* Hero Section */
         .hero { display: flex; align-items: center; justify-content: space-between; padding: 80px 10%; background: linear-gradient(135deg, #fff 0%, #e9ecef 100%); }
@@ -19,36 +19,44 @@
         .hero-text p { font-size: 18px; margin-bottom: 30px; color: #666; }
         .hero-img { flex: 1; text-align: center; display: flex; justify-content: center; }
         
-        /* Real App Icon Styling from Screenshot */
-        .app-icon-box { width: 180px; height: 180px; background-color: #0056b3; border-radius: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: 0 15px 30px rgba(0,86,179,0.3); color: #fff; border: 2px solid rgba(255,255,255,0.1); }
-        .app-letter { font-size: 90px; font-weight: 800; line-height: 1; margin-bottom: -5px; position: relative; }
-        .app-letter::after { content: '✓'; position: absolute; font-size: 35px; bottom: 12px; right: -15px; color: #fff; }
-        .app-name-sub { font-size: 18px; font-weight: bold; letter-spacing: 0.5px; }
+        /* Real App Icon - Match with Image 23914.png */
+        .app-icon-box { width: 200px; height: 200px; background-color: #0052ff; border-radius: 44px; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: 0 15px 35px rgba(0,82,255,0.3); color: #fff; padding: 20px; }
+        
+        /* Custom CSS to draw the exact 'A' logo with center checkmark */
+        .logo-container { position: relative; width: 100px; height: 100px; display: flex; justify-content: center; align-items: center; }
+        .char-a { font-size: 110px; font-weight: 700; font-family: sans-serif; line-height: 1; transform: scaleX(1.1); position: relative; }
+        .custom-check { position: absolute; font-size: 38px; font-weight: 900; color: #fff; top: 44px; left: 34px; transform: rotate(-5deg); text-shadow: 0px 2px 5px rgba(0,0,0,0.2); }
+        
+        .app-name-sub { font-size: 22px; font-weight: bold; margin-top: 10px; letter-spacing: 0.3px; }
 
-        /* Buttons */
-        .btn-playstore { display: inline-block; background: #000; color: #fff; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 16px; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        /* Official Google Play Button Styling */
+        .btn-playstore { display: inline-flex; align-items: center; gap: 12px; background: #000; color: #fff; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 16px; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
         .btn-playstore:hover { background: #222; transform: translateY(-2px); }
+        
+        /* Google Play Shopping Bag/Triangle Icon SVG */
+        .play-icon { width: 22px; height: 22px; }
 
         /* Features Section */
         .features { padding: 80px 10%; background: #fff; text-align: center; }
         .features h2 { font-size: 36px; margin-bottom: 10px; color: #111; }
         .features .subtitle { color: #666; margin-bottom: 50px; font-size: 18px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; }
-        .card { padding: 30px; background: #f8f9fa; border-radius: 12px; transition: 0.3s; border-top: 4px solid #0056b3; text-align: left; }
+        .card { padding: 30px; background: #f8f9fa; border-radius: 12px; transition: 0.3s; border-top: 4px solid #0052ff; text-align: left; }
         .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .card h3 { margin-bottom: 15px; color: #0056b3; font-size: 20px; }
+        .card h3 { margin-bottom: 15px; color: #0052ff; font-size: 20px; }
 
         /* Footer */
         footer { background: #111; color: #fff; text-align: center; padding: 40px 10%; font-size: 14px; }
         footer p { margin-bottom: 10px; color: #ccc; }
         footer a { color: #fff; text-decoration: none; margin: 0 10px; font-weight: 600; }
-        footer a:hover { color: #0056b3; }
+        footer a:hover { color: #0052ff; }
         
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .hero { flex-direction: column; text-align: center; padding: 40px 5%; }
             .hero-text { padding-right: 0; margin-bottom: 40px; }
             .hero-text h1 { font-size: 32px; }
+            .hero-img { margin-top: 20px; }
         }
     </style>
 </head>
@@ -64,11 +72,22 @@
         <div class="hero-text">
             <h1>Appointu: Appointment Booking</h1>
             <p>Your Appointments, Simplified. A single app with role-based login to seamlessly connect users and local appointment service providers near you.</p>
-            <a href="https://play.google.com/store/apps/details?id=com.appointu.app" class="btn-playstore" target="_blank">🤖 Download on Play Store</a>
+            
+            <!-- Real Playstore Icon Appended inside SVG -->
+            <a href="https://play.google.com/store/apps/details?id=com.appointu.app" class="btn-playstore" target="_blank">
+                <svg class="play-icon" viewBox="0 0 512 512" fill="white">
+                    <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58 33.3-60.1-60.1 118.1 26.8c12.4 2.8 21.3 13.7 21.3 26.8s-8.9 24-21.3 26.8zM385.4 337.8L104.6 499l220.7-126.5 60.1-60.1z"/>
+                </svg>
+                GET IT ON Google Play
+            </a>
         </div>
         <div class="hero-img">
+            <!-- Exact Match App Icon Representation -->
             <div class="app-icon-box">
-                <div class="app-letter">A</div>
+                <div class="logo-container">
+                    <span class="char-a">A</span>
+                    <span class="custom-check">✓</span>
+                </div>
                 <div class="app-name-sub">Appointu</div>
             </div>
         </div>
@@ -84,7 +103,7 @@
                 <p>Users can easily input their current pincode to instantly search and find nearby shops, clinics, and appointment services.</p>
             </div>
             <div class="card">
-                <h3>🆓 Free Booking</h3>
+                <h3>#️⃣ Free Booking</h3>
                 <p>Quick and simple booking workflow allowing users to book verified professional service slots with zero hassle.</p>
             </div>
             <div class="card">
