@@ -3,113 +3,464 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OKnear - Chamorshi Shop Online</title>
+    <title>OKnear - Chamorshi Shop Online | Your Trusted Local Delivery</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #fcfcfc; color: #222; line-height: 1.6; }
-        
-        /* Navigation */
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 10%; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .logo-text { font-size: 26px; font-weight: bold; color: #28a745; font-style: italic; }
-        
-        /* Hero Section */
-        .hero { display: flex; align-items: center; justify-content: space-between; padding: 80px 10%; background: linear-gradient(135deg, #fff 0%, #f4fdf4 100%); }
-        .hero-text { flex: 1; padding-right: 50px; }
-        .hero-text h1 { font-size: 42px; margin-bottom: 15px; color: #111; font-weight: 800; }
-        .hero-text .tagline { font-size: 20px; color: #28a745; font-weight: 600; margin-bottom: 15px; }
-        .hero-text p { font-size: 17px; margin-bottom: 30px; color: #555; }
-        .hero-img { flex: 1; text-align: center; display: flex; justify-content: center; }
-        
-        /* App Icon Frame matching 23918.png */
-        .app-icon-frame { width: 220px; padding: 20px; background: #fff; border-radius: 40px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); text-align: center; border: 1px solid #f0f0f0; }
-        .app-icon-frame img { width: 100%; height: auto; border-radius: 10px; }
+        :root {
+            --primary-color: #00c853;
+            --secondary-color: #ff9100;
+            --dark-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #ffffff;
+            --text-muted: #aaaaaa;
+        }
 
-        /* Official Google Play Button */
-        .btn-playstore { display: inline-flex; align-items: center; gap: 12px; background: #000; color: #fff; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 16px; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-        .btn-playstore:hover { background: #222; transform: translateY(-2px); }
-        .play-icon { width: 22px; height: 22px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-        /* Delivery Badge Highlight from Screenshot */
-        .badge-container { display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
-        .badge { background: #eef9f2; color: #28a745; padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; border: 1px solid #c3e6cb; display: flex; align-items: center; gap: 6px; }
+        body {
+            background-color: var(--dark-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-        /* Features Section */
-        .features { padding: 80px 10%; background: #fff; text-align: center; }
-        .features h2 { font-size: 36px; margin-bottom: 10px; color: #111; }
-        .features .subtitle { color: #666; margin-bottom: 50px; font-size: 18px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; }
-        .card { padding: 30px; background: #fdfdfd; border-radius: 12px; transition: 0.3s; border-top: 4px solid #28a745; text-align: left; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.06); }
-        .card h3 { margin-bottom: 15px; color: #28a745; font-size: 20px; }
+        header {
+            background: rgba(18, 18, 18, 0.85);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #292929;
+        }
 
-        /* Footer */
-        footer { background: #111; color: #fff; text-align: center; padding: 40px 10%; font-size: 14px; }
-        footer p { margin-bottom: 10px; color: #ccc; }
-        footer a { color: #fff; text-decoration: none; margin: 0 10px; font-weight: 600; }
-        footer a:hover { color: #28a745; }
-        
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .hero { flex-direction: column; text-align: center; padding: 40px 5%; }
-            .hero-text { padding-right: 0; margin-bottom: 40px; }
-            .hero-text h1 { font-size: 32px; }
-            .badge-container { justify-content: center; }
-            .hero-img { margin-top: 20px; }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-area img {
+            height: 45px;
+            width: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,200,83,0.3);
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            background: linear-gradient(45deg, #ffffff, var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-left: 25px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .hero {
+            padding: 100px 20px 60px 20px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(0, 200, 83, 0.15);
+            filter: blur(120px);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 span {
+            color: var(--primary-color);
+            text-shadow: 0 0 20px rgba(0,200,83,0.2);
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            max-width: 600px;
+        }
+
+        .playstore-click-box {
+            display: inline-block;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .playstore-click-box:hover {
+            transform: scale(1.06);
+        }
+
+        .features {
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            letter-spacing: 0.5px;
+        }
+
+        .section-title span {
+            color: var(--primary-color);
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid #292929;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 30px rgba(0, 200, 83, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 45px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: inline-block;
+            background: rgba(0, 200, 83, 0.1);
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        .app-showcase {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .app-showcase img {
+            width: 220px;
+            height: auto;
+            border-radius: 15px;
+            border: 3px solid #292929;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            transition: transform 0.3s;
+        }
+
+        .app-showcase img:hover {
+            transform: scale(1.05) rotate(1deg);
+            border-color: var(--primary-color);
+        }
+
+        .business-info {
+            padding: 80px 20px;
+            background: #161616;
+            border-top: 1px solid #292929;
+            border-bottom: 1px solid #292929;
+        }
+
+        .info-container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 50px 40px;
+            border-radius: 24px;
+            border: 1px solid #292929;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .info-item i {
+            font-size: 24px;
+            color: var(--primary-color);
+            background: rgba(0, 200, 83, 0.1);
+            padding: 12px;
+            border-radius: 12px;
+        }
+
+        .info-item h4 {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .info-item p {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        footer {
+            background: #0d0d0d;
+            color: #ffffff;
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            border-bottom: 1px solid #222222;
+            padding-bottom: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-links {
+            margin: 25px 0;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 15px;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            font-size: 14px;
+            color: #666666;
+        }
+
+        @media (max-width: 991px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-text p {
+                margin: 0 auto 35px auto;
+            }
+            .app-showcase {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-text h1 {
+                font-size: 32px;
+            }
+            .info-container {
+                padding: 30px 20px;
+            }
+            .nav-links {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo-text">OKnear</div>
-    </nav>
-
-    <section class="hero">
-        <div class="hero-text">
-            <h1>OKnear - Chamorshi Shop Online</h1>
-            <div class="tagline">Your Trusted Local Delivery</div>
-            <p>Shop with confidence from your local cloth stores. Browse trending dresses, kurtis, kids wear, and more. Enjoy a seamless experience built entirely around your comfort and trust.</p>
-            
-            <div class="badge-container">
-                <div class="badge">✓ Open Box Delivery</div>
-                <div class="badge">✓ Easy Rejection</div>
-                <div class="badge">✓ Check Before You Pay</div>
+    <!-- Header Section -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-area">
+                <img src="23918.png" alt="OKnear App Icon"> 
+                <span class="logo-text">OKnear</span>
             </div>
-
-            <a href="https://play.google.com/store/apps/details?id=com.oknear.app" class="btn-playstore" target="_blank">
-                <svg class="play-icon" viewBox="0 0 512 512" fill="white">
-                    <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58 33.3-60.1-60.1 118.1 26.8c12.4 2.8 21.3 13.7 21.3 26.8s-8.9 24-21.3 26.8zM385.4 337.8L104.6 499l220.7-126.5 60.1-60.1z"/>
-                </svg>
-                GET IT ON Google Play
-            </a>
+            <nav class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#store-details">Store Details</a>
+                <a href="https://sites.google.com/view/oknearlegal/home" target="_blank">Legal Policy</a>
+            </nav>
         </div>
-        
-        <div class="hero-img">
-            <div class="app-icon-frame">
-                <img src="23918.png" alt="OKnear App Icon">
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>OKnear - <span>Chamorshi Shop Online</span></h1>
+                <p>Shopping in Chamorshi made effortless! Browse your favorite local stores online and get fast, secure, and authenticated deliveries straight to your doorstep.</p>
+                
+                <!-- Official Google Play Vector Badge -->
+                <a href="https://play.google.com/store/apps/details?id=com.oknear.app" target="_blank" class="playstore-click-box">
+                    <svg title="Get it on Google Play" viewBox="0 0 647 200" style="height: 60px; width: auto; border-radius: 8px;">
+                        <path d="M0 0h647v200H0z"></path>
+                        <path fill="#a4a4a4" d="M189 74h-28v53h9v-19h18c14 0 22-8 22-17s-7-17-21-17zm-1 26h-18v-17h18c8 0 12 4 12 8s-4 9-12 9zm81-16c-16 0-26 11-26 27s10 27 26 27 26-11 26-27-10-27-26-27zm0 45c-11 0-17-8-17-18s6-18 17-18 17 8 17 18-6 18-17 18zm57-45c-10 0-18 5-21 11h-1v-9h-9v52h9v-18c0-13 6-19 15-19 8 0 12 5 12 13v24h9V93c0-14-8-21-23-21zm72 0c-15 0-25 11-25 27s9 27 25 27c11 0 19-6 22-14h-10c-3 4-7 6-12 6-9 0-14-6-15-13h38c1-2 1-4 1-6 0-16-10-27-24-27zm-16 20c1-7 6-12 15-12 8 0 13 5 14 12h-29zm77-20c-10 0-18 5-22 12h-1c-2-5-7-12-19-12-10 0-17 5-20 11h-1v-9h-9v35h9v-17c0-10 5-16 12-16 7 0 11 5 11 12v21h9v-17c0-10 5-16 12-16 7 0 11 5 11 12v21h9V93c0-14-7-21-21-21zm52 0c-14 0-24 10-24 26 0 15 9 26 23 26 10 0 17-5 21-12h-9c-3 4-7 6-12 6-8 0-13-5-14-12h36c0-2 0-3 0-5 0-16-9-25-21-25zm-15 20c1-7 6-12 14-12 8 0 12 5 13 12h-27zm55-20c-6 0-12 3-15 8h-1v-31h-9v53h9v-19c0-13 6-20 15-20 2 0 4 0 5 1v-9c-2 0-3 0-4 0zm31 0c-4 0-8 2-10 5h-1v-5h-9v35h9v-18c0-11 5-16 12-16 2 0 3 0 4 1v-9c-2 0-4 0-5 0z"></path>
+                        <path fill="#fff" d="M16 150h57v11H16zm0-71h30c18 0 29 10 29 25 0 16-11 25-30 25H16zm12 40h17c11 0 17-5 17-15s-6-15-17-15H28zm74-40c16 0 27 12 27 26s-11 26-27 26c-17 0-27-12-27-26s10-26 27-26zm0 42c10 0 16-8 16-16s-6-16-16-16-15 8-15 16 5 16 15 16zm51-42h13l-24 53h-12zm40 0c16 0 26 12 26 26s-10 26-26 26c-17 0-27-12-27-26s10-26 27-26zm0 42c10 0 16-8 16-16s-6-16-16-16-15 8-15 16 5 16 15 16zm45-42h12v42h24v10h-36zm56 0c15 0 25 11 25 25 0 2-1 4-1 5h-37c1 8 7 14 15 14 6 0 11-3 13-8h11c-4 10-13 16-24 16-17 0-27-12-27-26s10-26 25-26zm14 21c0-7-5-13-13-13-8 0-13 6-14 13zm77-21l-22 51c-4 9-9 14-18 14-3 0-5 0-7-1v-10c2 0 3 1 5 1 5 0 8-3 10-7l2-5-24-43h13l16 36h1l15-36z"></path>
+                        <path fill="#00e676" d="M121.2 81.7l-20.5-20.5c-2.3-2.3-5.7-2.9-8.6-1.7l49.5 49.5 7.8-7.8-28.2-19.5z"></path>
+                        <path fill="#ffeb3b" d="M141.6 109l-49.5-49.5c-1.2 2.9-.6 6.3 1.7 8.6l20.5 20.5 27.3 20.4z"></path>
+                        <path fill="#ff1744" d="M141.6 109l-7.8 7.8-27.3-20.4-20.5 20.5c-2.3 2.3-5.7 2.9-8.6 1.7l64.2-9.6z"></path>
+                        <path fill="#00b0ff" d="M77.4 128.2c2.9 1.2 6.3.6 8.6-1.7l20.5-20.5-29.1-29.1-64.2 9.6z"></path>
+                    </svg>
+                </a>
+            </div>
+            <div class="hero-image">
+                <div class="app-showcase">
+                    <img src="23916.jpg" alt="OKnear Interface 1">
+                    <img src="23919.jpg" alt="OKnear Interface 2">
+                    <img src="23922.jpg" alt="OKnear Interface 3">
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="features">
-        <h2>Shop Local. Shop Safe.</h2>
-        <p class="subtitle">Bringing your favorite local clothing stores right to your fingertips</p>
-        <div class="grid">
-            <div class="card">
-                <h3>📦 Open Box Delivery</h3>
-                <p>No more blind parcels. Open the box, check your clothing size and quality first, and then pay with total satisfaction.</p>
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <h2 class="section-title">Why Choose <span>OKnear</span>?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-box-open"></i></div>
+                <h3>Open Box Delivery</h3>
+                <p>Shop with complete confidence. Open and verify your package immediately upon delivery before releasing payment.</p>
             </div>
-            <div class="card">
-                <h3>↩️ Instant Rejection</h3>
-                <p>Not satisfied with the fabrics or look? Reject it easily right at the time of delivery. Completely stress-free process.</p>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-arrow-rotate-left"></i></div>
+                <h3>Instant Rejection</h3>
+                <p>Not fully satisfied with what you received? Simply hand it back right away. Hassle-free on-the-spot rejections.</p>
             </div>
-            <div class="card">
-                <h3>📍 Pincode Search</h3>
-                <p>Input your local pincode to browse live catalogs of clothing stores nearest to you for lightning-fast deliveries.</p>
-            </div>
-            <div class="card">
-                <h3>🛡️ Vendor & Spam Shield</h3>
-                <p>Dual role-based dashboard allowing genuine dress shops to upload products smoothly and filter out fake profiles with ease.</p>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>Trusted Local Network</h3>
+                <p>Sourced directly from verified local brick-and-mortar storefronts in your region for unparalleled quality and reliability.</p>
             </div>
         </div>
-    </
+    </section>
+
+    <!-- Business Info Section -->
+    <section id="store-details" class="business-info">
+        <div class="info-container">
+            <h2 class="section-title" style="margin-bottom: 20px;">Official <span>Store Details</span></h2>
+            <p style="text-align: center; color: var(--text-muted); max-width: 600px; margin: 0 auto;">OKnear is proudly backed and securely managed by our legally registered retail establishment.</p>
+            
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fa-solid fa-shop"></i>
+                    <div>
+                        <h4>Shop Name</h4>
+                        <p>SHIVKRUPA COLLECTION CHAMORSHI</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <div>
+                        <h4>Registration No.</h4>
+                        <p>2352000317548430</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <h4>Shop Address</h4>
+                        <p>Chamorshi, Gadchiroli, Maharashtra 442603, India.</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-clock"></i>
+                    <div>
+                        <h4>Operating Hours</h4>
+                        <p>10:00 AM to 8:00 PM<br><span style="color:var(--text-muted); font-size:13px; font-weight:400;">(Monday to Saturday)</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <h3 style="font-size: 26px; font-weight: 700; color: #ffffff; letter-spacing: 0.5px;">OKnear</h3>
+            <p style="color: var(--text-muted); margin-top: 5px;">Bridging premium local retail directly with consumers seamlessly.</p>
+            <div class="footer-links">
+                <a href="https://sites.google.com/view/oknearlegal/home" target="_blank">Privacy & Legal Policy</a>
+                <a href="mailto:helpdeskoknear@gmail.com">Contact Support</a>
+            </div>
+            <p style="font-size: 15px; color: #ffffff; margin-top: 15px;"><i class="fa-solid fa-envelope" style="color: var(--primary-color); margin-right: 8px;"></i> Support: helpdeskoknear@gmail.com</p>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 OKnear. All Rights Reserved. Owned and Operated by SHIVKRUPA COLLECTION.
+        </div>
+    </footer>
+
+</body>
+</html>
