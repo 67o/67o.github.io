@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OKNEAR - Smart App Solutions</title>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -17,154 +16,133 @@
         body {
             background-color: #f8fafc;
             color: #1e293b;
-            line-height: 1.6;
+            line-height: 1.4;
         }
 
-        /* Navigation Header */
+        /* Compact Header */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 8%;
+            padding: 12px 5%;
             background: #ffffff;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
         .logo {
-            font-size: 28px;
+            font-size: 22px;
             font-weight: 700;
             color: #2563eb;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .nav-links a {
             text-decoration: none;
             color: #475569;
-            margin-left: 25px;
             font-weight: 500;
-            transition: color 0.3s ease;
+            font-size: 14px;
         }
 
-        .nav-links a:hover {
-            color: #2563eb;
-        }
-
-        /* Hero Section */
+        /* Compact Hero Section */
         .hero {
             text-align: center;
-            padding: 70px 20px;
+            padding: 30px 15px 20px 15px;
             background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
         }
 
         .hero h1 {
-            font-size: 42px;
+            font-size: 28px;
             color: #0f172a;
-            margin-bottom: 15px;
+            margin-bottom: 8px;
         }
 
         .hero p {
-            font-size: 18px;
+            font-size: 14px;
             color: #475569;
-            max-width: 650px;
-            margin: 0 auto 30px auto;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        /* Apps Section */
+        /* Compact Apps Section */
         .apps-container {
-            padding: 60px 8%;
+            padding: 25px 5%;
             text-align: center;
         }
 
         .section-title {
-            font-size: 32px;
-            margin-bottom: 40px;
+            font-size: 22px;
+            margin-bottom: 20px;
             color: #0f172a;
         }
 
         .app-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
             max-width: 1100px;
             margin: 0 auto;
         }
 
         .app-card {
             background: #ffffff;
-            padding: 35px 25px;
-            border-radius: 16px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 20px 18px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             border: 1px solid #e2e8f0;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
-        .app-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-
         .app-card h3 {
-            font-size: 24px;
+            font-size: 20px;
             color: #1e293b;
-            margin-bottom: 12px;
+            margin-bottom: 6px;
         }
 
         .app-card p {
             color: #64748b;
-            font-size: 14px;
-            margin-bottom: 25px;
+            font-size: 13px;
+            margin-bottom: 15px;
         }
 
         .btn-group {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
         .btn {
-            display: inline-block;
-            padding: 12px 20px;
+            display: block;
+            padding: 10px 15px;
             background-color: #2563eb;
             color: #ffffff;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 6px;
             font-weight: 600;
-            transition: background-color 0.3s ease;
-            font-size: 14px;
-        }
-
-        .btn:hover {
-            background-color: #1d4ed8;
+            font-size: 13px;
+            text-align: center;
         }
 
         .btn-playstore {
             background-color: #0f172a;
         }
 
-        .btn-playstore:hover {
-            background-color: #1e293b;
-        }
-
-        /* Footer */
         footer {
             text-align: center;
-            padding: 25px;
+            padding: 15px;
             background-color: #0f172a;
             color: #94a3b8;
-            font-size: 14px;
-            margin-top: 60px;
+            font-size: 12px;
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Section -->
     <header>
         <div class="logo">OKNEAR</div>
         <nav class="nav-links">
@@ -172,18 +150,15 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <h1>Welcome to OKNEAR</h1>
         <p>Smart, reliable, and accessible applications built to make everyday services faster and easier.</p>
     </section>
 
-    <!-- Apps Section -->
     <section class="apps-container" id="apps">
         <h2 class="section-title">Our Mobile Applications</h2>
         <div class="app-grid">
             
-            <!-- App 1: OKNear -->
             <div class="app-card">
                 <div>
                     <h3>OKnear</h3>
@@ -195,7 +170,6 @@
                 </div>
             </div>
 
-            <!-- App 2: Appointu -->
             <div class="app-card">
                 <div>
                     <h3>Appointu</h3>
@@ -207,7 +181,6 @@
                 </div>
             </div>
 
-            <!-- App 3: Qualityscankaro -->
             <div class="app-card">
                 <div>
                     <h3>Qualityscankaro</h3>
@@ -221,7 +194,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2026 OKNEAR. All rights reserved.</p>
     </footer>
