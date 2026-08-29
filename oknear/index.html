@@ -7,28 +7,25 @@
     <title>OKnear - Shivkrupa Cloth Shop | Authentic Fashion & Local Delivery</title>
     <meta name="description" content="Shop direct from Shivkrupa Cloth Shop Chamorshi on OKnear with Open Box Delivery and on-the-spot verification.">
     
-    <!-- Premium Fonts -->
+    <!-- Ultra-Fast Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
     
-    <!-- FontAwesome Vector Icons -->
+    <!-- Vector Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
             --primary: #059669;
             --primary-light: #10b981;
-            --primary-glow: rgba(5, 150, 105, 0.4);
+            --primary-glow: rgba(5, 150, 105, 0.25);
             --accent-gold: #f59e0b;
             --dark: #090d16;
-            --dark-surface: #0f172a;
             --light-bg: #f8fafc;
             --text-main: #0f172a;
             --text-muted: #64748b;
-            --glass-bg: rgba(255, 255, 255, 0.85);
-            --glass-border: rgba(255, 255, 255, 0.7);
-            --card-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+            --card-border: #e2e8f0;
         }
 
         * {
@@ -42,62 +39,42 @@
             scroll-behavior: smooth;
         }
 
+        /* 100% GPU Optimized Background (Zero Fill-Rate Overhead) */
         body {
             background-color: var(--light-bg);
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
             background-image: 
-                radial-gradient(at 0% 0%, rgba(5, 150, 105, 0.08) 0px, transparent 50%),
-                radial-gradient(at 100% 50%, rgba(245, 158, 11, 0.06) 0px, transparent 50%),
-                radial-gradient(at 50% 100%, rgba(16, 185, 129, 0.07) 0px, transparent 50%);
+                radial-gradient(circle at 10% 10%, rgba(5, 150, 105, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 40%, rgba(245, 158, 11, 0.04) 0%, transparent 40%),
+                radial-gradient(circle at 50% 90%, rgba(16, 185, 129, 0.05) 0%, transparent 40%);
+            background-attachment: fixed;
         }
 
-        /* 3D Animated Background Grid */
+        /* Lightweight Subtle Grid */
         .bg-grid {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-size: 50px 50px;
+            background-size: 40px 40px;
             background-image: 
-                linear-gradient(to right, rgba(226, 232, 240, 0.45) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(226, 232, 240, 0.45) 1px, transparent 1px);
-            z-index: -2;
-            mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
-            -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
-            pointer-events: none;
-        }
-
-        /* Glowing Background Orbs */
-        .glow-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(110px);
+                linear-gradient(to right, rgba(226, 232, 240, 0.3) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(226, 232, 240, 0.3) 1px, transparent 1px);
             z-index: -1;
             pointer-events: none;
-            opacity: 0.65;
-            animation: orbFloat 10s ease-in-out infinite alternate;
-        }
-        .orb-1 { width: 450px; height: 450px; top: -80px; left: -100px; background: rgba(5, 150, 105, 0.25); }
-        .orb-2 { width: 400px; height: 400px; top: 350px; right: -100px; background: rgba(245, 158, 11, 0.2); animation-delay: -5s; }
-
-        @keyframes orbFloat {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(40px, 60px) scale(1.15); }
         }
 
-        /* Sticky Glass Navbar */
+        /* Zero-Lag Navbar */
         header {
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-            transition: all 0.3s ease;
+            background: #ffffff;
+            border-bottom: 1px solid var(--card-border);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
 
         .nav-container {
@@ -106,40 +83,34 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 24px;
+            padding: 14px 24px;
         }
 
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             text-decoration: none;
         }
 
         .logo-badge {
             background: linear-gradient(135deg, #059669 0%, #10b981 100%);
             color: #ffffff;
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 13px;
+            border-radius: 12px;
             font-weight: 900;
-            font-size: 18px;
-            box-shadow: 0 8px 20px var(--primary-glow);
-            transform: perspective(300px) rotateY(-8deg);
-            transition: transform 0.3s ease;
-        }
-
-        .logo-area:hover .logo-badge {
-            transform: perspective(300px) rotateY(0deg) scale(1.08);
+            font-size: 17px;
+            box-shadow: 0 4px 12px var(--primary-glow);
         }
 
         .logo-text {
-            font-size: 25px;
+            font-size: 24px;
             font-weight: 900;
-            letter-spacing: -0.8px;
+            letter-spacing: -0.6px;
             color: var(--dark);
         }
 
@@ -150,7 +121,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 32px;
+            gap: 28px;
         }
 
         .nav-links a {
@@ -158,7 +129,7 @@
             color: var(--text-muted);
             font-weight: 600;
             font-size: 15px;
-            transition: all 0.2s;
+            transition: color 0.15s ease;
         }
 
         .nav-links a:hover {
@@ -168,53 +139,47 @@
         .nav-btn {
             background: var(--dark);
             color: #ffffff !important;
-            padding: 10px 24px;
+            padding: 9px 22px;
             border-radius: 50px;
             font-size: 14px;
             font-weight: 700;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 6px 18px rgba(9, 13, 22, 0.25);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 12px rgba(9, 13, 22, 0.15);
+            transition: transform 0.2s ease, background-color 0.2s ease;
         }
 
         .nav-btn:hover {
             background: var(--primary);
-            box-shadow: 0 10px 25px var(--primary-glow);
             transform: translateY(-2px);
         }
 
-        /* Hero 3D Stage */
+        /* Hero Section */
         .hero {
             position: relative;
-            padding: 70px 24px 90px;
+            padding: 60px 24px 80px;
             max-width: 1240px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1.15fr 0.85fr;
             align-items: center;
             gap: 50px;
-            min-height: 85vh;
-        }
-
-        .hero-left {
-            z-index: 10;
+            min-height: 80vh;
         }
 
         .store-pill {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background: rgba(5, 150, 105, 0.08);
-            border: 1px solid rgba(5, 150, 105, 0.25);
-            padding: 7px 16px;
+            gap: 8px;
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            padding: 6px 16px;
             border-radius: 50px;
             font-size: 13px;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 24px;
-            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.08);
+            margin-bottom: 22px;
         }
 
         .live-dot {
@@ -228,17 +193,17 @@
 
         @keyframes pulse-green {
             0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
             100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
         }
 
         .hero-title {
-            font-size: 56px;
+            font-size: 54px;
             font-weight: 900;
             line-height: 1.12;
-            letter-spacing: -1.8px;
+            letter-spacing: -1.6px;
             color: var(--dark);
-            margin-bottom: 22px;
+            margin-bottom: 20px;
         }
 
         .hero-title span.highlight {
@@ -252,137 +217,122 @@
         .hero-desc {
             font-size: 18px;
             color: var(--text-muted);
-            line-height: 1.7;
-            margin-bottom: 38px;
-            max-width: 530px;
+            line-height: 1.65;
+            margin-bottom: 34px;
+            max-width: 520px;
         }
 
-        .cta-group {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        /* 3D Google Play Button */
+        /* 3D PlayStore Button */
         .playstore-btn-3d {
             display: inline-flex;
             align-items: center;
-            background: linear-gradient(180deg, #1e293b 0%, #090d16 100%);
+            background: #090d16;
             color: #ffffff;
-            padding: 15px 30px;
-            border-radius: 18px;
+            padding: 14px 28px;
+            border-radius: 16px;
             text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 
-                0 15px 35px rgba(9, 13, 22, 0.35),
-                inset 0 1px 1px rgba(255,255,255,0.25);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(9, 13, 22, 0.25);
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
         }
 
         .playstore-btn-3d:hover {
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 20px 40px rgba(5, 150, 105, 0.35);
-            border-color: rgba(16, 185, 129, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(5, 150, 105, 0.3);
         }
 
         .playstore-btn-3d i {
-            font-size: 34px;
-            margin-right: 16px;
-            background: linear-gradient(135deg, #00e676 0%, #00b0ff 50%, #ff5252 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 32px;
+            margin-right: 14px;
+            color: #00e676;
         }
 
         .btn-text .top-label {
             font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 1.2px;
+            letter-spacing: 1px;
             color: #94a3b8;
             font-weight: 700;
         }
 
         .btn-text .main-label {
-            font-size: 20px;
+            font-size: 19px;
             font-weight: 800;
             line-height: 1.2;
         }
 
-        /* 3D Phone Perspective Stage */
+        /* 3D Phone Mockup Container (Hardware-Accelerated) */
         .hero-right {
             position: relative;
-            perspective: 1600px;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 40px 20px;
+            perspective: 1200px;
         }
 
         .phone-3d-stage {
             position: relative;
             transform-style: preserve-3d;
-            transform: rotateY(-16deg) rotateX(12deg);
-            transition: transform 0.15s ease-out;
+            transform: rotateY(-12deg) rotateX(8deg);
+            transition: transform 0.3s ease-out;
             will-change: transform;
         }
 
-        /* Realistic Curved 3D Smartphone Device */
+        .phone-3d-stage:hover {
+            transform: rotateY(0deg) rotateX(0deg);
+        }
+
+        /* Smartphone Shell */
         .phone-body {
-            width: 295px;
-            height: 605px;
+            width: 290px;
+            height: 590px;
             background: #000000;
-            border-radius: 48px;
-            padding: 12px;
-            border: 4px solid #334155;
+            border-radius: 46px;
+            padding: 11px;
+            border: 3.5px solid #334155;
             box-shadow: 
-                -20px 30px 60px rgba(0, 0, 0, 0.35),
-                0 0 0 2px #0f172a,
-                inset 0 0 12px rgba(255, 255, 255, 0.2);
+                0 20px 40px -10px rgba(0, 0, 0, 0.3),
+                0 0 0 2px #0f172a;
             position: relative;
-            transform-style: preserve-3d;
+            transform: translateZ(0);
         }
 
         /* Dynamic Island */
         .dynamic-island {
             position: absolute;
-            top: 20px;
+            top: 18px;
             left: 50%;
             transform: translateX(-50%);
-            width: 95px;
-            height: 24px;
+            width: 90px;
+            height: 22px;
             background: #000000;
             border-radius: 20px;
             z-index: 50;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            padding: 0 8px;
         }
 
         .camera-lens {
-            width: 10px;
-            height: 10px;
+            width: 9px;
+            height: 9px;
             border-radius: 50%;
             background: #1e293b;
-            border: 1px solid #334155;
         }
 
         .sensor {
-            width: 6px;
-            height: 6px;
+            width: 5px;
+            height: 5px;
             border-radius: 50%;
             background: #0f172a;
         }
 
-        /* In-App Live Screen */
+        /* In-App Screen Content */
         .screen-content {
             width: 100%;
             height: 100%;
             background: #f8fafc;
-            border-radius: 38px;
+            border-radius: 36px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -390,7 +340,7 @@
         }
 
         .status-bar {
-            height: 44px;
+            height: 40px;
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
@@ -410,17 +360,17 @@
         }
 
         .app-nav-title {
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 900;
             color: var(--primary);
-            letter-spacing: -0.5px;
+            letter-spacing: -0.4px;
         }
 
         .app-search-box {
-            margin: 10px 14px;
+            margin: 8px 12px;
             background: #f1f5f9;
-            padding: 8px 14px;
-            border-radius: 12px;
+            padding: 8px 12px;
+            border-radius: 10px;
             font-size: 11px;
             color: #94a3b8;
             display: flex;
@@ -429,24 +379,21 @@
         }
 
         .app-sale-card {
-            margin: 0 14px 10px;
+            margin: 0 12px 8px;
             background: linear-gradient(135deg, #059669 0%, #047857 100%);
-            border-radius: 16px;
-            padding: 14px 16px;
+            border-radius: 14px;
+            padding: 12px 14px;
             color: #ffffff;
-            box-shadow: 0 8px 20px rgba(5, 150, 105, 0.25);
-            position: relative;
-            overflow: hidden;
         }
 
         .app-sale-card h4 {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 800;
             margin-bottom: 2px;
         }
 
         .app-sale-card p {
-            font-size: 10px;
+            font-size: 9.5px;
             opacity: 0.9;
         }
 
@@ -454,29 +401,28 @@
             display: inline-block;
             background: #f59e0b;
             color: #000000;
-            font-size: 8.5px;
+            font-size: 8px;
             font-weight: 900;
-            padding: 2px 8px;
-            border-radius: 6px;
-            margin-top: 6px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-top: 4px;
         }
 
         .app-story-row {
-            padding: 2px 14px;
+            padding: 2px 12px;
             display: flex;
-            gap: 8px;
+            gap: 6px;
             overflow: hidden;
         }
 
         .app-story-chip {
             background: #ffffff;
             border: 1px solid #e2e8f0;
-            padding: 4px 10px;
-            border-radius: 8px;
-            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 9.5px;
             font-weight: 700;
             color: #334155;
-            white-space: nowrap;
         }
 
         .app-story-chip.active {
@@ -486,7 +432,7 @@
         }
 
         .app-grid-2col {
-            padding: 10px 14px;
+            padding: 8px 12px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 8px;
@@ -495,26 +441,25 @@
         .app-mini-card {
             background: #ffffff;
             border: 1px solid #e2e8f0;
-            border-radius: 14px;
+            border-radius: 12px;
             padding: 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
         }
 
         .app-mini-img {
             width: 100%;
-            height: 80px;
+            height: 75px;
             background: #f1f5f9;
-            border-radius: 10px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #94a3b8;
-            font-size: 22px;
-            margin-bottom: 6px;
+            font-size: 20px;
+            margin-bottom: 4px;
         }
 
         .app-mini-title {
-            font-size: 10.5px;
+            font-size: 10px;
             font-weight: 700;
             color: #0f172a;
             white-space: nowrap;
@@ -523,222 +468,197 @@
         }
 
         .app-mini-price {
-            font-size: 11.5px;
+            font-size: 11px;
             font-weight: 900;
             color: #059669;
             margin-top: 2px;
         }
 
-        /* 3D Deep Floating Badges */
-        .glass-float-3d {
+        /* 3D Floating Badges (Pure CSS - Zero Lag) */
+        .badge-float-3d {
             position: absolute;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.85);
-            border-radius: 20px;
-            padding: 16px 20px;
-            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.12);
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 12px 18px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
             display: flex;
             align-items: center;
-            gap: 14px;
-            z-index: 80;
-            transform-style: preserve-3d;
-            animation: floatUpDown 5s ease-in-out infinite alternate;
+            gap: 12px;
+            z-index: 60;
+            transform: translateZ(35px);
+            animation: badgeFloat 4s ease-in-out infinite alternate;
         }
 
-        .float-top {
-            top: 30px;
-            left: -65px;
-            transform: translateZ(70px);
+        .badge-top {
+            top: 40px;
+            left: -50px;
             animation-delay: 0s;
         }
 
-        .float-bottom {
-            bottom: 50px;
-            right: -60px;
-            transform: translateZ(85px);
-            animation-delay: 2.5s;
+        .badge-bottom {
+            bottom: 60px;
+            right: -45px;
+            animation-delay: 2s;
         }
 
-        .glass-float-3d .icon-sphere {
-            width: 46px;
-            height: 46px;
-            border-radius: 14px;
+        .badge-float-3d .icon-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 18px;
         }
 
-        .icon-sphere.green { background: linear-gradient(135deg, rgba(5, 150, 105, 0.15) 0%, rgba(16, 185, 129, 0.25) 100%); color: #059669; }
-        .icon-sphere.gold { background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(251, 191, 36, 0.25) 100%); color: #f59e0b; }
+        .icon-circle.green { background: #ecfdf5; color: #059669; }
+        .icon-circle.gold { background: #fef3c7; color: #f59e0b; }
 
-        .glass-float-3d h5 {
-            font-size: 14px;
+        .badge-float-3d h5 {
+            font-size: 13.5px;
             font-weight: 800;
             color: var(--dark);
             line-height: 1.2;
         }
 
-        .glass-float-3d span {
-            font-size: 11.5px;
+        .badge-float-3d span {
+            font-size: 11px;
             color: var(--text-muted);
             font-weight: 600;
         }
 
-        @keyframes floatUpDown {
-            0% { transform: translateY(0px) translateZ(70px); }
-            100% { transform: translateY(-16px) translateZ(70px); }
+        @keyframes badgeFloat {
+            0% { transform: translateY(0px) translateZ(35px); }
+            100% { transform: translateY(-10px) translateZ(35px); }
         }
 
-        /* 3D Features Stage */
+        /* Features Section */
         .features-section {
-            padding: 110px 24px;
+            padding: 90px 24px;
             max-width: 1240px;
             margin: 0 auto;
         }
 
         .section-header {
             text-align: center;
-            max-width: 680px;
-            margin: 0 auto 65px;
+            max-width: 650px;
+            margin: 0 auto 55px;
         }
 
         .section-tag {
             font-size: 13px;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             color: var(--primary);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             display: block;
         }
 
         .section-title {
-            font-size: 42px;
+            font-size: 38px;
             font-weight: 900;
-            letter-spacing: -1.2px;
+            letter-spacing: -1px;
             color: var(--dark);
             line-height: 1.2;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
         }
 
-        .feature-card-tilt {
+        .feature-card {
             background: #ffffff;
-            border: 1px solid rgba(226, 232, 240, 0.9);
-            border-radius: 28px;
-            padding: 44px 36px;
-            box-shadow: var(--card-shadow);
-            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
-            position: relative;
-            overflow: hidden;
-            transform-style: preserve-3d;
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 38px 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
-        .feature-card-tilt:hover {
+        .feature-card:hover {
+            transform: translateY(-6px);
             border-color: var(--primary);
-            box-shadow: 0 30px 60px -15px rgba(5, 150, 105, 0.2);
         }
 
-        /* Spotlight Glare Effect */
-        .card-glare {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.8), transparent 60%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 5;
-        }
-
-        .feature-card-tilt:hover .card-glare {
-            opacity: 1;
-        }
-
-        .feature-icon-box {
-            width: 68px;
-            height: 68px;
-            background: linear-gradient(135deg, rgba(5, 150, 105, 0.1) 0%, rgba(16, 185, 129, 0.18) 100%);
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: #ecfdf5;
             color: var(--primary);
-            font-size: 28px;
+            font-size: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 20px;
-            margin-bottom: 26px;
-            box-shadow: 0 8px 20px rgba(5, 150, 105, 0.15);
+            border-radius: 18px;
+            margin-bottom: 22px;
         }
 
-        .feature-card-tilt h3 {
-            font-size: 23px;
+        .feature-card h3 {
+            font-size: 21px;
             font-weight: 800;
             color: var(--dark);
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
 
-        .feature-card-tilt p {
+        .feature-card p {
             color: var(--text-muted);
-            font-size: 15.5px;
-            line-height: 1.7;
+            font-size: 15px;
+            line-height: 1.65;
         }
 
         /* Registered Store Details */
         .store-section {
-            background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
-            padding: 110px 24px;
+            background: #ffffff;
+            border-top: 1px solid var(--card-border);
+            border-bottom: 1px solid var(--card-border);
+            padding: 90px 24px;
         }
 
         .store-card {
             max-width: 1040px;
             margin: 0 auto;
-            background: #ffffff;
-            border-radius: 32px;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            padding: 55px 50px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.06);
+            background: #f8fafc;
+            border-radius: 28px;
+            border: 1px solid var(--card-border);
+            padding: 50px 40px;
         }
 
         .store-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 32px;
-            margin-top: 45px;
+            gap: 28px;
+            margin-top: 40px;
         }
 
         .store-info-box {
             display: flex;
             align-items: flex-start;
-            gap: 16px;
+            gap: 14px;
         }
 
         .store-info-box i {
-            font-size: 24px;
+            font-size: 22px;
             color: var(--primary);
-            background: rgba(5, 150, 105, 0.08);
-            padding: 15px;
-            border-radius: 16px;
+            background: #ecfdf5;
+            padding: 13px;
+            border-radius: 14px;
         }
 
         .store-info-box h4 {
             font-size: 12px;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 0.6px;
             color: var(--text-muted);
             font-weight: 700;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
         .store-info-box p {
-            font-size: 16.5px;
+            font-size: 16px;
             font-weight: 800;
             color: var(--dark);
             line-height: 1.4;
@@ -748,7 +668,7 @@
         footer {
             background: #090d16;
             color: #ffffff;
-            padding: 80px 24px 35px;
+            padding: 70px 24px 30px;
         }
 
         .footer-container {
@@ -758,28 +678,28 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #1e293b;
-            padding-bottom: 45px;
+            padding-bottom: 40px;
             flex-wrap: wrap;
-            gap: 30px;
+            gap: 24px;
         }
 
         .footer-logo-text {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 900;
             color: #ffffff;
         }
 
         .footer-links {
             display: flex;
-            gap: 28px;
+            gap: 24px;
         }
 
         .footer-links a {
             color: #94a3b8;
             text-decoration: none;
             font-weight: 600;
-            font-size: 14.5px;
-            transition: color 0.2s;
+            font-size: 14px;
+            transition: color 0.15s ease;
         }
 
         .footer-links a:hover {
@@ -788,25 +708,25 @@
 
         .footer-bottom {
             max-width: 1240px;
-            margin: 35px auto 0;
+            margin: 30px auto 0;
             text-align: center;
-            font-size: 13.5px;
+            font-size: 13px;
             color: #64748b;
         }
 
-        /* Responsive Breakpoints */
+        /* Mobile Optimization */
         @media (max-width: 992px) {
             .hero {
                 grid-template-columns: 1fr;
                 text-align: center;
-                gap: 50px;
+                gap: 40px;
                 padding-top: 40px;
             }
             .hero-desc {
-                margin: 0 auto 38px;
+                margin: 0 auto 30px;
             }
-            .cta-group {
-                justify-content: center;
+            .playstore-btn-3d {
+                margin: 0 auto;
             }
             .phone-3d-stage {
                 transform: rotateY(0deg) rotateX(0deg);
@@ -815,30 +735,27 @@
 
         @media (max-width: 576px) {
             .hero-title {
-                font-size: 38px;
+                font-size: 36px;
             }
             .nav-links {
                 display: none;
             }
-            .float-top, .float-bottom {
+            .badge-top, .badge-bottom {
                 display: none;
             }
             .phone-body {
-                width: 270px;
-                height: 550px;
+                width: 265px;
+                height: 540px;
             }
             .store-card {
-                padding: 35px 22px;
+                padding: 30px 20px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- 3D Grid & Animated Glowing Background -->
     <div class="bg-grid"></div>
-    <div class="glow-orb orb-1"></div>
-    <div class="glow-orb orb-2"></div>
 
     <!-- Header / Navbar -->
     <header>
@@ -858,7 +775,7 @@
         </div>
     </header>
 
-    <!-- Hero 3D Section -->
+    <!-- Hero Section with 3D Smartphone Device -->
     <section class="hero">
         <div class="hero-left">
             <div class="store-pill">
@@ -871,7 +788,7 @@
             <p class="hero-desc">
                 Browse handpicked boutique sarees, designer kurtis, and festive apparel directly from Shivkrupa Cloth Shop Chamorshi with Open Box Delivery and on-spot verification.
             </p>
-            <div class="cta-group">
+            <div>
                 <a href="https://play.google.com/store/apps/details?id=com.oknear.app" target="_blank" class="playstore-btn-3d">
                     <i class="fab fa-google-play"></i>
                     <div class="btn-text">
@@ -882,11 +799,10 @@
             </div>
         </div>
 
-        <!-- 3D Realistic Smartphone Mockup with Multi-Layer Z-Depth -->
-        <div class="hero-right" id="heroStage">
-            <!-- 3D Floating Glass Badges -->
-            <div class="glass-float-3d float-top">
-                <div class="icon-sphere green">
+        <!-- 3D Smartphone Device -->
+        <div class="hero-right">
+            <div class="badge-float-3d badge-top">
+                <div class="icon-circle green">
                     <i class="fa-solid fa-box-open"></i>
                 </div>
                 <div>
@@ -895,8 +811,8 @@
                 </div>
             </div>
 
-            <div class="glass-float-3d float-bottom">
-                <div class="icon-sphere gold">
+            <div class="badge-float-3d badge-bottom">
+                <div class="icon-circle gold">
                     <i class="fa-solid fa-truck-fast"></i>
                 </div>
                 <div>
@@ -905,7 +821,7 @@
                 </div>
             </div>
 
-            <div class="phone-3d-stage" id="phoneStage">
+            <div class="phone-3d-stage">
                 <div class="phone-body">
                     <!-- Dynamic Island -->
                     <div class="dynamic-island">
@@ -913,7 +829,7 @@
                         <div class="camera-lens"></div>
                     </div>
 
-                    <!-- Realistic In-App Screen -->
+                    <!-- In-App Screen -->
                     <div class="screen-content">
                         <div class="status-bar">
                             <span>09:41</span>
@@ -921,7 +837,7 @@
                         </div>
                         <div class="app-nav">
                             <span class="app-nav-title">OKnear</span>
-                            <span style="font-size: 14px; color: #64748b;"><i class="fa-regular fa-heart"></i> &nbsp;<i class="fa-solid fa-bag-shopping"></i></span>
+                            <span style="font-size: 13px; color: #64748b;"><i class="fa-regular fa-heart"></i> &nbsp;<i class="fa-solid fa-bag-shopping"></i></span>
                         </div>
                         <div class="app-search-box">
                             <i class="fa-solid fa-magnifying-glass"></i> Search sarees, kurtis, dresses...
@@ -955,32 +871,29 @@
         </div>
     </section>
 
-    <!-- Why Choose 3D Cards Section -->
+    <!-- Why Choose Section -->
     <section id="features" class="features-section">
         <div class="section-header">
             <span class="section-tag">WHY OKNEAR?</span>
             <h2 class="section-title">A Revolutionary Way to Shop Fashion Locally</h2>
         </div>
         <div class="features-grid">
-            <div class="feature-card-tilt" data-tilt>
-                <div class="card-glare"></div>
-                <div class="feature-icon-box">
+            <div class="feature-card">
+                <div class="feature-icon">
                     <i class="fa-solid fa-box-open"></i>
                 </div>
                 <h3>Open Box Delivery</h3>
                 <p>No more fake surprise deliveries! Open your package and inspect the fabric quality right in front of the delivery partner before paying.</p>
             </div>
-            <div class="feature-card-tilt" data-tilt>
-                <div class="card-glare"></div>
-                <div class="feature-icon-box">
+            <div class="feature-card">
+                <div class="feature-icon">
                     <i class="fa-solid fa-arrow-rotate-left"></i>
                 </div>
                 <h3>Instant On-Spot Rejection</h3>
                 <p>Color didn't match? Fitting wasn't right? Hand it back on the spot with zero return shipping fees and immediate confirmation.</p>
             </div>
-            <div class="feature-card-tilt" data-tilt>
-                <div class="card-glare"></div>
-                <div class="feature-icon-box">
+            <div class="feature-card">
+                <div class="feature-icon">
                     <i class="fa-solid fa-shield-heart"></i>
                 </div>
                 <h3>Verified Regional Store</h3>
@@ -992,10 +905,10 @@
     <!-- Registered Store Details Section -->
     <section id="store-details" class="store-section">
         <div class="store-card">
-            <div class="section-header" style="margin-bottom: 30px;">
+            <div class="section-header" style="margin-bottom: 25px;">
                 <span class="section-tag">LEGALLY REGISTERED ESTABLISHMENT</span>
                 <h2 class="section-title">Official Store Details</h2>
-                <p style="color: var(--text-muted); margin-top: 8px;">OKnear is securely owned, operated, and backed by our registered commercial establishment.</p>
+                <p style="color: var(--text-muted); margin-top: 6px;">OKnear is securely owned, operated, and backed by our registered commercial establishment.</p>
             </div>
             <div class="store-grid">
                 <div class="store-info-box">
@@ -1035,7 +948,7 @@
         <div class="footer-container">
             <div>
                 <div class="footer-logo-text">OK<span style="color: #10b981;">near</span></div>
-                <p style="color: #64748b; font-size: 14px; margin-top: 6px;">Bridging premium local retail directly to your doorstep.</p>
+                <p style="color: #64748b; font-size: 14px; margin-top: 4px;">Bridging premium local retail directly to your doorstep.</p>
             </div>
             <div class="footer-links">
                 <a href="#features">Features</a>
@@ -1049,74 +962,5 @@
         </div>
     </footer>
 
-    <!-- 60FPS High Performance 3D Physics Engine (Desktop Mouse + Mobile Touch/Tilt) -->
-    <script>
-        const phone = document.getElementById('phoneStage');
-        let targetX = -16, targetY = 12;
-        let currentX = -16, currentY = 12;
-
-        // Desktop Mouse 3D Tracking
-        if (window.innerWidth > 992) {
-            document.addEventListener('mousemove', (e) => {
-                const xPct = (e.clientX / window.innerWidth) - 0.5;
-                const yPct = (e.clientY / window.innerHeight) - 0.5;
-                targetX = (xPct * -30) - 16;
-                targetY = (yPct * 25) + 12;
-            });
-
-            document.addEventListener('mouseleave', () => {
-                targetX = -16;
-                targetY = 12;
-            });
-        }
-
-        // Mobile Touch & Tilt 3D Movement
-        if (window.innerWidth <= 992) {
-            window.addEventListener('touchmove', (e) => {
-                if (e.touches.length > 0) {
-                    const touch = e.touches[0];
-                    const xPct = (touch.clientX / window.innerWidth) - 0.5;
-                    const yPct = (touch.clientY / window.innerHeight) - 0.5;
-                    targetX = (xPct * -25);
-                    targetY = (yPct * 20);
-                }
-            }, { passive: true });
-        }
-
-        // Smooth Lerp Rendering Loop (60 FPS)
-        function render3D() {
-            currentX += (targetX - currentX) * 0.08;
-            currentY += (targetY - currentY) * 0.08;
-            if (phone) {
-                phone.style.transform = `rotateY(${currentX}deg) rotateX(${currentY}deg)`;
-            }
-            requestAnimationFrame(render3D);
-        }
-        render3D();
-
-        // 3D Card Spotlight & Tilt Effect on Hover
-        document.querySelectorAll('[data-tilt]').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotX = ((y - centerY) / centerY) * -10;
-                const rotY = ((x - centerX) / centerX) * 10;
-                
-                card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-8px)`;
-                
-                const glare = card.querySelector('.card-glare');
-                if (glare) {
-                    glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.7), transparent 65%)`;
-                }
-            });
-
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = `perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
-            });
-        });
-    </script>
 </body>
 </html>
