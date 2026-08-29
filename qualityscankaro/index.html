@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qualityscankaro - Smart AI Label Scanner & Health Radar</title>
+    <meta name="description" content="Instant AI transparency scanner for Food, Cosmetics, Gym Supplements, and Household Cleaners. Detect toxic additives, ultra-processed fillers, and allergens on-device.">
+    <meta name="keywords" content="food scanner, label scanner, barcode scanner, NOVA food index, nutri-score, comedogenic acne scanner, protein purity, amino spiking, e-codes, clean beauty">
+    <meta name="theme-color" content="#0F172A">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #10B981;
+            --primary-dark: #059669;
+            --primary-light: #34D399;
+            --accent: #F59E0B;
+            --bg-dark: #0B0F19;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --font-heading: 'Plus Jakarta Sans', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Glow Backgrounds */
+        .glow-sphere {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.25;
+        }
+        .glow-1 { top: -100px; left: -100px; width: 500px; height: 500px; background: #10B981; }
+        .glow-2 { top: 40%; right: -150px; width: 600px; height: 600px; background: #0284C7; }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            background: rgba(11, 15, 25, 0.8);
+            border-bottom: 1px solid var(--card-border);
+            z-index: 100;
+            padding: 18px 0;
+        }
+        .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 22px;
+            color: var(--text-main);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-link:hover {
+            color: var(--text-main);
+        }
+        .btn-nav {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--primary-light);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .btn-nav:hover {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 60px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: var(--primary-light);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 52px;
+            line-height: 1.15;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, #34D399, #10B981, #38BDF8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 32px;
+            max-width: 520px;
+        }
+        .cta-group {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .btn-playstore {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #000;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+        .btn-playstore:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.3);
+        }
+        .btn-playstore svg {
+            width: 30px;
+            height: 30px;
+        }
+        .btn-text-small {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #94A3B8;
+            line-height: 1.2;
+        }
+        .btn-text-large {
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        .privacy-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #34D399;
+            font-weight: 500;
+        }
+
+        /* Mockup Card Frame */
+        .hero-mockup {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        .phone-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 28px;
+            padding: 24px;
+            width: 100%;
+            max-width: 360px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+        .phone-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #10B981, #06B6D4, #3B82F6);
+        }
+        .scanner-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .live-tag {
+            background: rgba(239, 68, 68, 0.15);
+            color: #EF4444;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .live-dot {
+            width: 6px;
+            height: 6px;
+            background: #EF4444;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.4); opacity: 0.4; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .scan-view-box {
+            background: rgba(15, 23, 42, 0.8);
+            border: 2px dashed rgba(16, 185, 129, 0.4);
+            border-radius: 16px;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .scan-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #10B981, transparent);
+            box-shadow: 0 0 12px #10B981;
+            animation: scanAnim 2.5s ease-in-out infinite;
+        }
+        @keyframes scanAnim {
+            0% { top: 0%; }
+            50% { top: 95%; }
+            100% { top: 0%; }
+        }
+        .result-pill-bad {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #F87171;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .result-grid-mini {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .mini-stat {
+            background: rgba(15, 23, 42, 0.6);
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .mini-stat-label {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+        .mini-stat-val {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            padding: 40px 0;
+            border-top: 1px solid var(--card-border);
+            border-bottom: 1px solid var(--card-border);
+            background: rgba(15, 23, 42, 0.4);
+            margin: 40px 0 80px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            text-align: center;
+        }
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--primary-light);
+            margin-bottom: 4px;
+        }
+        .stat-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* Feature Tabs */
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-badge {
+            color: var(--primary-light);
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .section-header h2 {
+            font-family: var(--font-heading);
+            font-size: 38px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 17px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .tab-nav {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--card-border);
+            color: var(--text-muted);
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tab-btn:hover {
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .tab-btn.active {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        .tab-content {
+            display: none;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(16px);
+        }
+        .tab-content.active {
+            display: grid;
+        }
+        .tab-text h3 {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .tab-text p {
+            color: var(--text-muted);
+            font-size: 16px;
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+        .feature-bullets {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .feature-bullets li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+        .bullet-check {
+            width: 22px;
+            height: 22px;
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        /* 3-Step Process */
+        .process-section {
+            padding: 100px 0;
+        }
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .process-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 36px 28px;
+            position: relative;
+            transition: transform 0.3s;
+        }
+        .process-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+        .process-num {
+            font-family: var(--font-heading);
+            font-size: 44px;
+            font-weight: 800;
+            color: rgba(16, 185, 129, 0.2);
+            margin-bottom: 16px;
+        }
+        .process-card h4 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .process-card p {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 60px 0 100px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            margin-bottom: 14px;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+        .faq-question {
+            padding: 20px 24px;
+            font-weight: 600;
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+        .faq-answer {
+            padding: 0 24px 20px;
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.6;
+            display: none;
+        }
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+        .faq-item.open {
+            border-color: rgba(16, 185, 129, 0.4);
+        }
+
+        /* Banner CTA */
+        .banner-cta {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(2, 132, 199, 0.2));
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 28px;
+            padding: 60px 40px;
+            text-align: center;
+            margin-bottom: 80px;
+            backdrop-filter: blur(20px);
+        }
+        .banner-cta h2 {
+            font-family: var(--font-heading);
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        .banner-cta p {
+            color: var(--text-muted);
+            font-size: 18px;
+            max-width: 550px;
+            margin: 0 auto 32px;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--card-border);
+            padding: 50px 0 30px;
+            background: rgba(11, 15, 25, 0.95);
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+        .footer-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        .footer-link:hover {
+            color: var(--text-main);
+        }
+        .footer-legal {
+            text-align: center;
+            font-size: 12px;
+            color: #64748B;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero { grid-template-columns: 1fr; text-align: center; }
+            .hero p { margin: 0 auto 32px; }
+            .cta-group { justify-content: center; }
+            .hero h1 { font-size: 40px; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .tab-content { grid-template-columns: 1fr; }
+            .process-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow-sphere glow-1"></div>
+    <div class="glow-sphere glow-2"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-content">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                Qualityscankaro
+            </a>
+            <div class="nav-links">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <a href="https://sites.google.com/view/qualityscankaro/home" target="_blank" class="nav-link">Privacy Policy</a>
+                <a href="https://play.google.com/store/apps/details?id=com.qualityscankaro" target="_blank" class="btn-nav">Get App</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-left">
+                <div class="hero-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    100% On-Device AI Privacy Engine
+                </div>
+                <h1>Scan What You Consume. <span>Uncover Hidden Risks.</span></h1>
+                <p>An intelligent 4-in-1 transparency radar for Food, Cosmetics, Gym Supplements, and Household Cleaners. Detect toxic chemicals, UPF fillers, and allergens in milliseconds.</p>
+                <div class="cta-group">
+                    <a href="https://play.google.com/store/apps/details?id=com.qualityscankaro" target="_blank" class="btn-playstore">
+                        <svg viewBox="0 0 512 512" fill="currentColor">
+                            <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z" fill="#00E676"/>
+                        </svg>
+                        <div>
+                            <div class="btn-text-small">Get it on</div>
+                            <div class="btn-text-large">Google Play</div>
+                        </div>
+                    </a>
+                    <div class="privacy-pill">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        Zero Telemetry Collected
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phone Card Preview -->
+            <div class="hero-mockup">
+                <div class="phone-card">
+                    <div class="scanner-header">
+                        <span style="font-weight: 700; font-size: 15px;">Smart Radar Scanner</span>
+                        <div class="live-tag">
+                            <div class="live-dot"></div>
+                            AI OCR ACTIVE
+                        </div>
+                    </div>
+                    <div class="scan-view-box">
+                        <div class="scan-line"></div>
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="1.5"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/></svg>
+                        <span style="font-size: 12px; color: #94A3B8; margin-top: 10px;">Scanning Packaging...</span>
+                    </div>
+                    <div class="result-pill-bad">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        <span>Ultra-Processed (UPF Group 4)</span>
+                    </div>
+                    <div class="result-grid-mini">
+                        <div class="mini-stat">
+                            <div class="mini-stat-label">Diabetic Risk</div>
+                            <div class="mini-stat-val" style="color: #F87171;">Maltodextrin (GI 110)</div>
+                        </div>
+                        <div class="mini-stat">
+                            <div class="mini-stat-label">Burn-Off Walk</div>
+                            <div class="mini-stat-val" style="color: #34D399;">48 Mins</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Bar -->
+        <section class="stats-bar">
+            <div class="stats-grid">
+                <div>
+                    <div class="stat-number">4-in-1</div>
+                    <div class="stat-desc">Food, Beauty, Gym & Cleaners</div>
+                </div>
+                <div>
+                    <div class="stat-number">500+</div>
+                    <div class="stat-desc">Offline E-Codes Chemical Index</div>
+                </div>
+                <div>
+                    <div class="stat-number">&lt; 100ms</div>
+                    <div class="stat-desc">Ultra-Fast AI Recognition</div>
+                </div>
+                <div>
+                    <div class="stat-number">100%</div>
+                    <div class="stat-desc">On-Device Local Privacy</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Tabs Section -->
+        <section id="features">
+            <div class="section-header">
+                <span class="section-badge">Comprehensive Multi-Sector Auditing</span>
+                <h2>One App. Four Essential Lifelines.</h2>
+                <p>Qualityscankaro consolidates complex laboratory databases into an intuitive radar built for your daily lifestyle.</p>
+            </div>
+
+            <div class="tab-nav">
+                <button class="tab-btn active" onclick="switchTab(0)">🥗 Food & Nutrition</button>
+                <button class="tab-btn" onclick="switchTab(1)">💄 Cosmetics & Skincare</button>
+                <button class="tab-btn" onclick="switchTab(2)">🏋️ Gym Supplements</button>
+                <button class="tab-btn" onclick="switchTab(3)">🛡️ Smart Health Radar</button>
+            </div>
+
+            <!-- Tab 1: Food -->
+            <div class="tab-content active" id="tab-0">
+                <div class="tab-text">
+                    <h3>Scientifically Decode What's In Your Food</h3>
+                    <p>Uncover industrial processing tricks, compute European Nutri-Scores, and view exact exercise burn-off durations before you buy.</p>
+                    <ul class="feature-bullets">
+                        <li><span class="bullet-check">✓</span> <b>NOVA UPF Classification (1-4):</b> Flags emulsifiers, cosmetic dyes & texturizers.</li>
+                        <li><span class="bullet-check">✓</span> <b>Nutri-Score (A-E):</b> Balances calorie load vs fiber and natural protein.</li>
+                        <li><span class="bullet-check">✓</span> <b>MET Exercise Burn-Off:</b> Converts calories into walking, cycling & running minutes.</li>
+                        <li><span class="bullet-check">✓</span> <b>California AB 418 Dye Shield:</b> Flags Red 40, Titanium Dioxide E171, and banned dyes.</li>
+                    </ul>
+                </div>
+                <div class="tab-text" style="background: rgba(15, 23, 42, 0.6); padding: 30px; border-radius: 18px; border: 1px solid var(--card-border);">
+                    <h4 style="color: #34D399; margin-bottom: 10px;">⚡ Instant 1-Line Verdict</h4>
+                    <p style="font-size: 14px;">"⚠️ Moderate Hazard: Contains Palm Olein, E102 Tartrazine & High Glycemic Maltodextrin. Not recommended for Diabetics."</p>
+                </div>
+            </div>
+
+            <!-- Tab 2: Cosmetics -->
+            <div class="tab-content" id="tab-1">
+                <div class="tab-text">
+                    <h3>Pore-Clogging & Endocrine Toxicity Auditing</h3>
+                    <p>Scan INCI chemical lists on skincare, makeup, and shampoos to protect your hormonal health and avoid acne breakouts.</p>
+                    <ul class="feature-bullets">
+                        <li><span class="bullet-check">✓</span> <b>Comedogenic Acne Rating (0-5):</b> Detects pore-clogging lipids (Isopropyl Myristate).</li>
+                        <li><span class="bullet-check">✓</span> <b>Clean Beauty Badges:</b> Paraben-Free, Sulfate-Free (SLS/SLES), Phthalate-Free.</li>
+                        <li><span class="bullet-check">✓</span> <b>Endocrine Disruptor Shield:</b> Alerts against BHA, Formaldehyde releasers & D4 silicones.</li>
+                    </ul>
+                </div>
+                <div class="tab-text" style="background: rgba(15, 23, 42, 0.6); padding: 30px; border-radius: 18px; border: 1px solid var(--card-border);">
+                    <h4 style="color: #38BDF8; margin-bottom: 10px;">✨ Clean Beauty Audit</h4>
+                    <p style="font-size: 14px;">"🚫 High Acne Risk (Comedogenic Score 5/5): Contains Isopropyl Myristate. Free from Parabens and Sulfates."</p>
+                </div>
+            </div>
+
+            <!-- Tab 3: Supplements -->
+            <div class="tab-content" id="tab-2">
+                <div class="tab-text">
+                    <h3>Catch Protein Fraud & Amino Spiking</h3>
+                    <p>Ensure you get the pure protein you paid for. Audit whey isolates, mass gainers, and pre-workouts against nitrogen cheating.</p>
+                    <ul class="feature-bullets">
+                        <li><span class="bullet-check">✓</span> <b>True Protein Purity Ratio:</b> Pure protein grams vs carb & maltodextrin fillers.</li>
+                        <li><span class="bullet-check">✓</span> <b>Amino Spiking Detection:</b> Flags cheap free Glycine, Taurine & Creatine additions.</li>
+                        <li><span class="bullet-check">✓</span> <b>Macro & BMR Calculator:</b> Harris-Benedict BMR, TDEE & 100g normalization math.</li>
+                    </ul>
+                </div>
+                <div class="tab-text" style="background: rgba(15, 23, 42, 0.6); padding: 30px; border-radius: 18px; border: 1px solid var(--card-border);">
+                    <h4 style="color: #F59E0B; margin-bottom: 10px;">🏋️ Purity Ratio Verdict</h4>
+                    <p style="font-size: 14px;">"⚠️ Amino Spiking Warning: Free Glycine detected in ingredients. True Protein Purity estimated at 62%."</p>
+                </div>
+            </div>
+
+            <!-- Tab 4: Health Radar -->
+            <div class="tab-content" id="tab-3">
+                <div class="tab-text">
+                    <h3>Personalized On-Device Health Shields</h3>
+                    <p>Customize your safety radar to match your medical conditions with 100% on-device private processing.</p>
+                    <ul class="feature-bullets">
+                        <li><span class="bullet-check">✓</span> <b>Diabetic Low-GI Shield:</b> Flags hidden sugars with Glycemic Index > 80.</li>
+                        <li><span class="bullet-check">✓</span> <b>Kids ADHD Dye Guard:</b> Protects against petroleum colorings (Red 40, Yellow 5).</li>
+                        <li><span class="bullet-check">✓</span> <b>Top 14 Allergen Alerts:</b> Gluten, Peanuts, Tree Nuts, Milk, Soy, Shellfish, Fish, etc.</li>
+                        <li><span class="bullet-check">✓</span> <b>500+ E-Codes Database:</b> Complete offline WHO & EFSA safety catalog.</li>
+                    </ul>
+                </div>
+                <div class="tab-text" style="background: rgba(15, 23, 42, 0.6); padding: 30px; border-radius: 18px; border: 1px solid var(--card-border);">
+                    <h4 style="color: #10B981; margin-bottom: 10px;">🛡️ Active Personal Shields</h4>
+                    <p style="font-size: 14px;">"🚨 Allergen Detected: Contains Milk & Soy Lecithin. Safe for Gluten-Free profile."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3-Step Process -->
+        <section id="how-it-works" class="process-section">
+            <div class="section-header">
+                <span class="section-badge">Fast & Seamless</span>
+                <h2>How Qualityscankaro Works</h2>
+                <p>Three simple steps from barcode to instant health clarity.</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-card">
+                    <div class="process-num">01</div>
+                    <h4>Scan Barcode or Label</h4>
+                    <p>Point your camera at any product barcode or snap front/side/back text panels using our 360° multi-photo session stacker.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-num">02</div>
+                    <h4>On-Device AI Analysis</h4>
+                    <p>Our localized neural vision engine decodes ingredients, cross-referencing global databases for UPF fillers, toxic chemicals, and allergens.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-num">03</div>
+                    <h4>Get 1-Line Verdict</h4>
+                    <p>Receive transparent health scores, plain verdicts, burn-off exercise calculations, and tailored safety alerts within milliseconds.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq-section">
+            <div class="section-header">
+                <span class="section-badge">Got Questions?</span>
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Is my health data and scan history kept private?
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Yes! Qualityscankaro operates with 100% on-device local processing. Your health profiles, allergen preferences, and scan history never leave your smartphone. We have zero telemetry tracking and collect zero personal data.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Can I scan products that have no barcode?
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Absolutely. Using our AI Camera OCR and Multi-Panel Photo Stacking, you can capture any printed ingredient list directly from curved bottles, boxes, or bakery packets.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Does this app require an internet connection?
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    The 500+ E-Codes encyclopedia, personal health shields, comedogenic acne radar, and amino-spiking detector are stored locally in the app and work completely offline!
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Is Qualityscankaro free to use?
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Yes, Qualityscankaro is completely free to download on Google Play Store without any mandatory account registration.
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom CTA Banner -->
+        <section class="banner-cta">
+            <h2>Take Control of Your Health Today</h2>
+            <p>Download Qualityscankaro on Google Play and join thousands making cleaner, smarter choices every day.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.qualityscankaro" target="_blank" class="btn-playstore">
+                <svg viewBox="0 0 512 512" fill="currentColor">
+                    <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z" fill="#00E676"/>
+                </svg>
+                <div>
+                    <div class="btn-text-small">Get it on</div>
+                    <div class="btn-text-large">Google Play</div>
+                </div>
+            </a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <div class="logo-icon" style="width: 30px; height: 30px;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    Qualityscankaro
+                </div>
+                <div class="footer-links">
+                    <a href="https://play.google.com/store/apps/details?id=com.qualityscankaro" target="_blank" class="footer-link">Google Play</a>
+                    <a href="https://sites.google.com/view/qualityscankaro/home" target="_blank" class="footer-link">Privacy Policy</a>
+                    <a href="mailto:support@qualityscankaro.com" class="footer-link">Contact Support</a>
+                </div>
+            </div>
+            <div class="footer-legal">
+                &copy; 2026 Qualityscankaro. All rights reserved. Qualityscankaro is an educational consumer transparency and lifestyle tool.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        function switchTab(index) {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const contents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach((tab, i) => {
+                if (i === index) {
+                    tab.classList.add('active');
+                    contents[i].classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                    contents[i].classList.remove('active');
+                }
+            });
+        }
+
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            item.classList.toggle('open');
+            const span = element.querySelector('span');
+            span.textContent = item.classList.contains('open') ? '−' : '+';
+        }
+    </script>
+</body>
+</html>
