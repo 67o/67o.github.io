@@ -4,434 +4,1100 @@
     <meta name="google-site-verification" content="BiHmLspmO6JFkfe9DkrhriayD1HU9yEQCL9BybYDOCM" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OKnear - Shivkrupa Cloth Shop | Your Trusted Local Delivery</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>OKnear - Shivkrupa Cloth Shop | Premium Local Fashion Delivery</title>
+    <meta name="description" content="Shop authentic ethnic fashion, sarees, kurtis & dresses from Shivkrupa Cloth Shop Chamorshi on OKnear with Open Box Delivery.">
+    
+    <!-- Premium Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         :root {
-            --primary-color: #2e7d32; 
-            --dark-color: #212121;
-            --light-bg: #ffffff;
-            --card-bg: #f8f9fa;
-            --text-color: #212121;
-            --text-muted: #666666;
-            --border-color: #e0e0e0;
+            --primary: #059669;
+            --primary-glow: rgba(5, 150, 105, 0.35);
+            --primary-dark: #047857;
+            --accent: #f59e0b;
+            --dark: #0f172a;
+            --dark-surface: #1e293b;
+            --light-bg: #f8fafc;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --card-shadow: 0 20px 40px -15px rgba(0,0,0,0.07);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             background-color: var(--light-bg);
-            color: var(--text-color);
+            color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Header / Navbar Section */
+        /* Ambient Glow Backgrounds */
+        .ambient-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+        .glow-1 { top: -100px; left: -100px; background: rgba(5, 150, 105, 0.2); }
+        .glow-2 { top: 300px; right: -150px; background: rgba(245, 158, 11, 0.15); }
+
+        /* Navbar */
         header {
-            background: #ffffff;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            transition: all 0.3s ease;
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1240px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
+            padding: 16px 24px;
         }
 
         .logo-area {
             display: flex;
             align-items: center;
             gap: 10px;
+            text-decoration: none;
         }
 
-        /* CSS-Based Clean Logo Badge - No Image File Needed */
         .logo-badge {
-            background: var(--primary-color);
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
             color: #ffffff;
-            padding: 5px 12px;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 17px;
+            box-shadow: 0 6px 16px var(--primary-glow);
         }
 
         .logo-text {
             font-size: 24px;
-            font-weight: 700;
-            color: var(--primary-color);
-            letter-spacing: 0.5px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--dark);
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--text-muted);
             font-weight: 600;
-            margin-left: 25px;
-            transition: color 0.3s;
+            font-size: 15px;
+            transition: all 0.2s;
         }
 
         .nav-links a:hover {
-            color: var(--primary-color);
+            color: var(--primary);
+        }
+
+        .nav-btn {
+            background: var(--dark);
+            color: #ffffff !important;
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--primary);
+            box-shadow: 0 6px 20px var(--primary-glow);
+            transform: translateY(-2px);
         }
 
         /* Hero Section */
         .hero {
-            padding: 80px 20px;
-            background: linear-gradient(180deg, #f1f8e9 0%, #ffffff 100%);
-            text-align: center;
-        }
-
-        .hero-container {
-            max-width: 800px;
+            position: relative;
+            padding: 80px 24px 100px;
+            max-width: 1240px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            align-items: center;
+            gap: 60px;
+            min-height: 85vh;
         }
 
-        .hero-text h1 {
-            font-size: 44px;
+        .hero-left {
+            z-index: 10;
+        }
+
+        .store-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(5, 150, 105, 0.08);
+            border: 1px solid rgba(5, 150, 105, 0.25);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 13px;
             font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 24px;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            animation: pulse-green 1.8s infinite;
+        }
+
+        @keyframes pulse-green {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .hero-title {
+            font-size: 54px;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            color: var(--dark);
             margin-bottom: 20px;
-            line-height: 1.2;
-            color: var(--dark-color);
         }
 
-        .hero-text h1 span {
-            color: var(--primary-color);
+        .hero-title span.highlight {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
         }
 
-        .hero-text p {
+        .hero-desc {
             font-size: 18px;
             color: var(--text-muted);
-            margin-bottom: 40px;
+            line-height: 1.7;
+            margin-bottom: 36px;
+            max-width: 540px;
         }
 
-        /* Clean CSS Google Play Button - Built In-House without Image Breakage */
+        .cta-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* 3D Google Play Button */
         .playstore-button {
             display: inline-flex;
             align-items: center;
-            background-color: #000000;
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
             color: #ffffff;
-            padding: 12px 28px;
-            border-radius: 10px;
+            padding: 14px 28px;
+            border-radius: 16px;
             text-decoration: none;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.35), inset 0 1px 1px rgba(255,255,255,0.2);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .playstore-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 20px 35px rgba(5, 150, 105, 0.3);
+            border-color: rgba(16, 185, 129, 0.5);
         }
 
         .playstore-button i {
-            font-size: 30px;
-            margin-right: 14px;
-            color: #00e676; /* Beautiful Play Store Green Icon Accenting */
-        }
-
-        .btn-text {
-            text-align: left;
-            display: flex;
-            flex-direction: column;
+            font-size: 32px;
+            margin-right: 16px;
+            background: linear-gradient(135deg, #00e676 0%, #00b0ff 50%, #ff5252 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .btn-text .top-label {
             font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #aaaaaa;
+            letter-spacing: 1px;
+            color: #94a3b8;
+            font-weight: 600;
         }
 
         .btn-text .main-label {
-            font-size: 18px;
-            font-weight: 600;
+            font-size: 19px;
+            font-weight: 700;
             line-height: 1.2;
         }
 
-        /* Features Section */
-        .features {
-            padding: 80px 20px;
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 18px;
             background: #ffffff;
+            border-radius: 14px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--card-shadow);
+        }
+
+        .trust-stars {
+            color: var(--accent);
+            font-size: 13px;
+        }
+
+        .trust-text {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        /* 3D App Mockup Canvas */
+        .hero-right {
+            position: relative;
+            perspective: 1400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .phone-3d-wrapper {
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateY(-14deg) rotateX(10deg);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.2));
+        }
+
+        .phone-3d-wrapper:hover {
+            transform: rotateY(0deg) rotateX(0deg) scale(1.03);
+        }
+
+        /* Realistic Smartphone Device */
+        .phone-frame {
+            width: 290px;
+            height: 590px;
+            background: #000000;
+            border-radius: 46px;
+            padding: 11px;
+            border: 4px solid #334155;
+            box-shadow: 
+                0 0 0 2px #0f172a,
+                0 20px 50px rgba(0, 0, 0, 0.4),
+                inset 0 0 10px rgba(255, 255, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Dynamic Island / Notch */
+        .phone-notch {
+            position: absolute;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 22px;
+            background: #000000;
+            border-radius: 20px;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8px;
+        }
+
+        .camera-lens {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #1e293b;
+            border: 1px solid #334155;
+        }
+
+        .sensor {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #0f172a;
+        }
+
+        /* In-App Screen Content */
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #f8fafc;
+            border-radius: 36px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .app-status-bar {
+            height: 42px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 0 20px 6px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .app-header {
+            padding: 8px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .app-logo {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.3px;
+        }
+
+        .app-search {
+            margin: 10px 14px;
+            background: #f1f5f9;
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 11px;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .app-hero-banner {
+            margin: 0 14px 10px;
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            border-radius: 14px;
+            padding: 14px;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-hero-banner h4 {
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 2px;
+        }
+
+        .app-hero-banner p {
+            font-size: 10px;
+            opacity: 0.9;
+        }
+
+        .app-hero-badge {
+            display: inline-block;
+            background: #f59e0b;
+            color: #000;
+            font-size: 8px;
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-top: 6px;
+        }
+
+        .app-categories {
+            padding: 4px 14px;
+            display: flex;
+            gap: 8px;
+            overflow: hidden;
+        }
+
+        .app-cat-chip {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 10px;
+            font-weight: 700;
+            color: #334155;
+            white-space: nowrap;
+        }
+
+        .app-cat-chip.active {
+            background: #059669;
+            color: #ffffff;
+            border-color: #059669;
+        }
+
+        .app-products {
+            padding: 10px 14px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .app-product-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 8px;
+        }
+
+        .app-prod-img {
+            width: 100%;
+            height: 75px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 20px;
+            margin-bottom: 6px;
+        }
+
+        .app-prod-title {
+            font-size: 10px;
+            font-weight: 700;
+            color: #0f172a;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .app-prod-price {
+            font-size: 11px;
+            font-weight: 800;
+            color: #059669;
+            margin-top: 2px;
+        }
+
+        /* 3D Floating Glass Badges */
+        .floating-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 16px;
+            padding: 14px 18px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 60;
+            transform-style: preserve-3d;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .card-top-left {
+            top: 40px;
+            left: -50px;
+            transform: translateZ(50px);
+            animation-delay: 0s;
+        }
+
+        .card-bottom-right {
+            bottom: 60px;
+            right: -45px;
+            transform: translateZ(60px);
+            animation-delay: 2s;
+        }
+
+        .floating-card .icon-box {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .icon-box.green { background: rgba(5, 150, 105, 0.12); color: #059669; }
+        .icon-box.gold { background: rgba(245, 158, 11, 0.12); color: #f59e0b; }
+
+        .floating-card h5 {
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--dark);
+            line-height: 1.2;
+        }
+
+        .floating-card span {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateZ(50px); }
+            50% { transform: translateY(-12px) translateZ(50px); }
+        }
+
+        /* Stats Bar */
+        .stats-section {
+            background: #ffffff;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 35px 24px;
+        }
+
+        .stats-grid {
+            max-width: 1240px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--dark);
+            letter-spacing: -0.5px;
+        }
+
+        .stat-item h3 span {
+            color: var(--primary);
+        }
+
+        .stat-item p {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* Features Grid */
+        .features-section {
+            padding: 100px 24px;
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 60px;
+        }
+
+        .section-tag {
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: block;
         }
 
         .section-title {
-            text-align: center;
-            font-size: 34px;
-            font-weight: 700;
-            margin-bottom: 50px;
-            color: var(--dark-color);
-        }
-
-        .section-title span {
-            color: var(--primary-color);
+            font-size: 38px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--dark);
+            line-height: 1.2;
         }
 
         .features-grid {
-            max-width: 1200px;
-            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
         }
 
-        .feature-card {
-            background: var(--card-bg);
-            padding: 40px 30px;
-            border-radius: 16px;
-            text-align: center;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
+        .feature-card-3d {
+            background: #ffffff;
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            border-radius: 24px;
+            padding: 40px 32px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
         }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-color);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        .feature-card-3d:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 25px 45px -15px rgba(5, 150, 105, 0.15);
         }
 
-        .feature-icon {
-            font-size: 40px;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            display: inline-block;
-            background: rgba(46, 125, 50, 0.1);
-            width: 75px;
-            height: 75px;
-            line-height: 75px;
-            border-radius: 50%;
+        .feature-icon-wrapper {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.1) 0%, rgba(16, 185, 129, 0.15) 100%);
+            color: var(--primary);
+            font-size: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            margin-bottom: 24px;
         }
 
-        .feature-card h3 {
+        .feature-card-3d h3 {
             font-size: 22px;
-            margin-bottom: 15px;
-            color: var(--dark-color);
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 12px;
         }
 
-        .feature-card p {
+        .feature-card-3d p {
             color: var(--text-muted);
             font-size: 15px;
+            line-height: 1.7;
         }
 
-        /* Business Info Section */
-        .business-info {
-            padding: 80px 20px;
-            background: #fdfdfd;
-            border-top: 1px solid var(--border-color);
+        /* Store Verification / Details */
+        .store-section {
+            background: #f1f5f9;
+            padding: 100px 24px;
         }
 
-        .info-container {
-            max-width: 950px;
+        .store-card {
+            max-width: 1000px;
             margin: 0 auto;
             background: #ffffff;
-            padding: 50px 40px;
-            border-radius: 20px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border-radius: 28px;
+            border: 1px solid #e2e8f0;
+            padding: 50px 45px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
         }
 
-        .info-grid {
+        .store-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
 
-        .info-item {
+        .store-info-box {
             display: flex;
             align-items: flex-start;
-            gap: 15px;
+            gap: 16px;
         }
 
-        .info-item i {
+        .store-info-box i {
             font-size: 22px;
-            color: var(--primary-color);
-            background: rgba(46, 125, 50, 0.08);
-            padding: 12px;
-            border-radius: 12px;
+            color: var(--primary);
+            background: rgba(5, 150, 105, 0.08);
+            padding: 14px;
+            border-radius: 14px;
         }
 
-        .info-item h4 {
-            font-size: 13px;
-            color: var(--text-muted);
+        .store-info-box h4 {
+            font-size: 12px;
             text-transform: uppercase;
-            font-weight: 600;
-            margin-bottom: 5px;
             letter-spacing: 0.5px;
+            color: var(--text-muted);
+            font-weight: 700;
+            margin-bottom: 4px;
         }
 
-        .info-item p {
+        .store-info-box p {
             font-size: 16px;
-            font-weight: 600;
-            color: var(--dark-color);
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1.4;
         }
 
-        /* Footer Section */
+        /* Footer */
         footer {
-            background: #1a1a1a;
+            background: #090d16;
             color: #ffffff;
-            padding: 50px 20px 30px 20px;
-            text-align: center;
+            padding: 70px 24px 30px;
         }
 
-        .footer-content {
-            max-width: 1200px;
+        .footer-container {
+            max-width: 1240px;
             margin: 0 auto;
-            border-bottom: 1px solid #333333;
-            padding-bottom: 30px;
-            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1e293b;
+            padding-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-logo-text {
+            font-size: 26px;
+            font-weight: 800;
+            color: #ffffff;
         }
 
         .footer-links {
-            margin: 20px 0;
+            display: flex;
+            gap: 24px;
         }
 
         .footer-links a {
-            color: #cccccc;
+            color: #94a3b8;
             text-decoration: none;
-            margin: 0 15px;
-            font-size: 15px;
-            transition: color 0.3s;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.2s;
         }
 
         .footer-links a:hover {
-            color: var(--primary-color);
+            color: #10b981;
         }
 
         .footer-bottom {
-            font-size: 14px;
-            color: #888888;
+            max-width: 1240px;
+            margin: 30px auto 0;
+            text-align: center;
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 50px;
+                padding-top: 40px;
+            }
+            .hero-desc {
+                margin: 0 auto 36px;
+            }
+            .cta-group {
+                justify-content: center;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .phone-3d-wrapper {
+                transform: rotateY(0deg) rotateX(0deg);
+            }
         }
 
         @media (max-width: 576px) {
-            .hero-text h1 {
-                font-size: 32px;
-            }
-            .info-container {
-                padding: 30px 20px;
+            .hero-title {
+                font-size: 38px;
             }
             .nav-links {
                 display: none;
+            }
+            .card-top-left, .card-bottom-right {
+                display: none;
+            }
+            .phone-frame {
+                width: 260px;
+                height: 530px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .store-card {
+                padding: 30px 20px;
             }
         }
     </style>
 </head>
 <body>
 
+    <!-- Ambient Glowing Orbs -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
+    <!-- Header / Navbar -->
     <header>
         <div class="nav-container">
-            <div class="logo-area">
-                <div class="logo-badge">OK</div> 
-                <span class="logo-text">OKnear</span>
-            </div>
+            <a href="#" class="logo-area">
+                <div class="logo-badge">OK</div>
+                <div class="logo-text">OK<span>near</span></div>
+            </a>
             <nav class="nav-links">
                 <a href="#features">Features</a>
                 <a href="#store-details">Store Details</a>
                 <a href="https://sites.google.com/view/oknearlegal/home" target="_blank">Legal Policy</a>
+                <a href="https://play.google.com/store/apps/details?id=com.oknear.app" target="_blank" class="nav-btn">
+                    <i class="fab fa-google-play"></i> Get App
+                </a>
             </nav>
         </div>
     </header>
 
+    <!-- Hero Section with 3D Realistic Device -->
     <section class="hero">
-        <div class="hero-container">
-            <div class="hero-text">
-                <h1>OKnear - <span>Shivkrupa Cloth Shop</span></h1>
-                <p>Shopping in Chamorshi made effortless! Browse your favorite local stores online and get fast, secure, and authenticated deliveries straight to your doorstep.</p>
-                
+        <div class="hero-left">
+            <div class="store-tag">
+                <span class="live-dot"></span>
+                Official Store Online • Shivkrupa Cloth Shop
+            </div>
+            <h1 class="hero-title">
+                Experience Luxury Fashion <span class="highlight">Delivered Locally.</span>
+            </h1>
+            <p class="hero-desc">
+                Browse handpicked boutique sarees, bridal kurtis, and designer suits directly from Chamorshi's trusted retail store with 100% verified Open Box Delivery.
+            </p>
+            <div class="cta-group">
                 <a href="https://play.google.com/store/apps/details?id=com.oknear.app" target="_blank" class="playstore-button">
                     <i class="fab fa-google-play"></i>
                     <div class="btn-text">
-                        <span class="top-label">GET IT ON</span>
+                        <span class="top-label">DOWNLOAD NOW</span>
                         <span class="main-label">Google Play</span>
                     </div>
                 </a>
+                <div class="trust-badge">
+                    <div class="trust-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="trust-text">4.9 / 5 Rating</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3D Smartphone Device Mockup -->
+        <div class="hero-right">
+            <!-- Floating 3D Depth Badges -->
+            <div class="floating-card card-top-left">
+                <div class="icon-box green">
+                    <i class="fa-solid fa-box-open"></i>
+                </div>
+                <div>
+                    <h5>Open Box Delivery</h5>
+                    <span>Verify before payment</span>
+                </div>
+            </div>
+
+            <div class="floating-card card-bottom-right">
+                <div class="icon-box gold">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <div>
+                    <h5>Fast Express Delivery</h5>
+                    <span>Doorstep within hours</span>
+                </div>
+            </div>
+
+            <div class="phone-3d-wrapper" id="phoneWrapper">
+                <div class="phone-frame">
+                    <!-- Dynamic Island -->
+                    <div class="phone-notch">
+                        <div class="sensor"></div>
+                        <div class="camera-lens"></div>
+                    </div>
+
+                    <!-- Realistic In-App Screen -->
+                    <div class="phone-screen">
+                        <div class="app-status-bar">
+                            <span>09:41</span>
+                            <span><i class="fa-solid fa-signal"></i> <i class="fa-solid fa-wifi"></i> <i class="fa-solid fa-battery-full"></i></span>
+                        </div>
+                        <div class="app-header">
+                            <span class="app-logo">OKnear</span>
+                            <span style="font-size: 14px; color: #64748b;"><i class="fa-regular fa-heart"></i> &nbsp;<i class="fa-solid fa-bag-shopping"></i></span>
+                        </div>
+                        <div class="app-search">
+                            <i class="fa-solid fa-magnifying-glass"></i> Search sarees, kurtis...
+                        </div>
+                        <div class="app-hero-banner">
+                            <h4>FESTIVE LUXURY SALE</h4>
+                            <p>Get Up to 60% OFF Today</p>
+                            <span class="app-hero-badge">SPECIAL OFFERS</span>
+                        </div>
+                        <div class="app-categories">
+                            <div class="app-cat-chip active">All</div>
+                            <div class="app-cat-chip">Sarees</div>
+                            <div class="app-cat-chip">Kurtis</div>
+                            <div class="app-cat-chip">Suits</div>
+                        </div>
+                        <div class="app-products">
+                            <div class="app-product-card">
+                                <div class="app-prod-img"><i class="fa-solid fa-shirt"></i></div>
+                                <div class="app-prod-title">Banarasi Silk Saree</div>
+                                <div class="app-prod-price">₹1,499 <span style="font-size:8px; color:#94a3b8; text-decoration:line-through;">₹2,999</span></div>
+                            </div>
+                            <div class="app-product-card">
+                                <div class="app-prod-img"><i class="fa-solid fa-vest-patches"></i></div>
+                                <div class="app-prod-title">Designer Anarkali</div>
+                                <div class="app-prod-price">₹899 <span style="font-size:8px; color:#94a3b8; text-decoration:line-through;">₹1,799</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="features" class="features">
-        <h2 class="section-title">Why Choose <span>OKnear</span>?</h2>
+    <!-- Stats Bar -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>100<span>%</span></h3>
+                <p>Authentic Local Fabrics</p>
+            </div>
+            <div class="stat-item">
+                <h3>0<span>₹</span></h3>
+                <p>Hassle-Free Rejections</p>
+            </div>
+            <div class="stat-item">
+                <h3>15<span>+</span></h3>
+                <p>Regional Pincodes Covered</p>
+            </div>
+            <div class="stat-item">
+                <h3>4.9<span>★</span></h3>
+                <p>Verified Customer Rating</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section id="features" class="features-section">
+        <div class="section-header">
+            <span class="section-tag">WHY OKNEAR?</span>
+            <h2 class="section-title">A Revolutionary Way to Shop Fashion Locally</h2>
+        </div>
         <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-box-open"></i></div>
+            <div class="feature-card-3d">
+                <div class="feature-icon-wrapper">
+                    <i class="fa-solid fa-box-open"></i>
+                </div>
                 <h3>Open Box Delivery</h3>
-                <p>Shop with complete confidence. Open and verify your package immediately upon delivery before releasing payment.</p>
+                <p>No more fake surprise deliveries! Open your package and inspect the fabric quality right in front of the delivery partner before paying.</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-arrow-rotate-left"></i></div>
-                <h3>Instant Rejection</h3>
-                <p>Not fully satisfied with what you received? Simply hand it back right away. Hassle-free on-the-spot rejections.</p>
+            <div class="feature-card-3d">
+                <div class="feature-icon-wrapper">
+                    <i class="fa-solid fa-arrow-rotate-left"></i>
+                </div>
+                <h3>Instant On-Spot Rejection</h3>
+                <p>Color didn't match? Fitting wasn't right? Hand it back on the spot with zero return shipping fees and immediate confirmation.</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                <h3>Trusted Local Network</h3>
-                <p>Sourced directly from verified local brick-and-mortar storefronts in your region for unparalleled quality and reliability.</p>
+            <div class="feature-card-3d">
+                <div class="feature-icon-wrapper">
+                    <i class="fa-solid fa-shield-heart"></i>
+                </div>
+                <h3>Verified Regional Stores</h3>
+                <p>Every piece is sourced directly from trusted, registered local retail stores like Shivkrupa Collection for guaranteed authenticity.</p>
             </div>
         </div>
     </section>
 
-    <section id="store-details" class="business-info">
-        <div class="info-container">
-            <h2 class="section-title" style="margin-bottom: 20px;">Official <span>Store Details</span></h2>
-            <p style="text-align: center; color: var(--text-muted); max-width: 600px; margin: 0 auto;">OKnear is proudly backed and securely managed by our legally registered retail establishment.</p>
-            
-            <div class="info-grid">
-                <div class="info-item">
+    <!-- Registered Store Details Section -->
+    <section id="store-details" class="store-section">
+        <div class="store-card">
+            <div class="section-header" style="margin-bottom: 30px;">
+                <span class="section-tag">LEGALLY REGISTERED BUSINESS</span>
+                <h2 class="section-title">Official Store Details</h2>
+                <p style="color: var(--text-muted); margin-top: 8px;">OKnear is securely owned, operated, and backed by our registered commercial establishment.</p>
+            </div>
+            <div class="store-grid">
+                <div class="store-info-box">
                     <i class="fa-solid fa-shop"></i>
                     <div>
-                        <h4>Shop Name</h4>
+                        <h4>Business Name</h4>
                         <p>SHIVKRUPA COLLECTION CHAMORSHI</p>
                     </div>
                 </div>
-                <div class="info-item">
-                    <i class="fa-solid fa-file-invoice"></i>
+                <div class="store-info-box">
+                    <i class="fa-solid fa-certificate"></i>
                     <div>
                         <h4>Registration No.</h4>
                         <p>2352000317548430</p>
                     </div>
                 </div>
-                <div class="info-item">
+                <div class="store-info-box">
                     <i class="fa-solid fa-location-dot"></i>
                     <div>
-                        <h4>Shop Address</h4>
+                        <h4>Store Address</h4>
                         <p>Chamorshi, Gadchiroli, Maharashtra 442603, India.</p>
                     </div>
                 </div>
-                <div class="info-item">
+                <div class="store-info-box">
                     <i class="fa-solid fa-clock"></i>
                     <div>
                         <h4>Operating Hours</h4>
-                        <p>10:00 AM to 8:00 PM<br><span style="color:var(--text-muted); font-size:13px; font-weight:400;">(Monday to Saturday)</span></p>
+                        <p>10:00 AM – 8:00 PM<br><span style="font-size:12px; color:var(--text-muted); font-weight:500;">(Mon to Sat)</span></p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Modern Dark Luxury Footer -->
     <footer>
-        <div class="footer-content">
-            <h3 style="font-size: 26px; font-weight: 700; color: #ffffff;">OKnear</h3>
-            <p style="color: #888888; margin-top: 5px;">Bridging premium local retail directly with consumers seamlessly.</p>
+        <div class="footer-container">
+            <div>
+                <div class="footer-logo-text">OK<span style="color: #10b981;">near</span></div>
+                <p style="color: #64748b; font-size: 14px; margin-top: 6px;">Bridging premium local retail directly to your doorstep.</p>
+            </div>
             <div class="footer-links">
+                <a href="#features">Features</a>
+                <a href="#store-details">Store Details</a>
                 <a href="https://sites.google.com/view/oknearlegal/home" target="_blank">Privacy & Legal Policy</a>
             </div>
-            <p style="font-size: 15px; color: #ffffff; margin-top: 15px;"><i class="fa-solid fa-envelope" style="color: var(--primary-color); margin-right: 8px;"></i> Support Email: helpdeskoknear@gmail.com</p>
         </div>
         <div class="footer-bottom">
-            &copy; 2026 OKnear. All Rights Reserved. Owned and Operated by SHIVKRUPA COLLECTION.
+            <p>&copy; 2026 OKnear. All Rights Reserved. Owned and Operated by SHIVKRUPA COLLECTION.</p>
+            <p style="margin-top: 6px; color: #94a3b8;"><i class="fa-solid fa-envelope" style="color: #10b981;"></i> helpdeskoknear@gmail.com</p>
         </div>
     </footer>
 
+    <!-- Interactive 3D Parallax Script -->
+    <script>
+        const phone = document.getElementById('phoneWrapper');
+        if (window.innerWidth > 992) {
+            document.addEventListener('mousemove', (e) => {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+                phone.style.transform = `rotateY(${xAxis - 14}deg) rotateX(${yAxis + 10}deg)`;
+            });
+            document.addEventListener('mouseleave', () => {
+                phone.style.transform = `rotateY(-14deg) rotateX(10deg)`;
+            });
+        }
+    </script>
 </body>
 </html>
