@@ -1,1 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UtilityBhai - All-in-One Daily Utility Tools & Privacy-First App</title>
+  <meta name="description" content="UtilityBhai is your all-in-one daily utilities companion with 40+ offline tools including PDF tools, calculators, currency converters, QR code generator & scanner." />
+  <meta name="keywords" content="UtilityBhai, all in one utilities, pdf tools, calculator, unit converter, currency converter, qr code generator, offline utility app" />
+  
+  <!-- Open Graph / Meta for Social Sharing -->
+  <meta property="og:title" content="UtilityBhai - All-in-One Utility Companion" />
+  <meta property="og:description" content="40+ Powerful Tools in One Fast, Lightweight & Privacy-First Android App." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://play.google.com/store/apps/details?id=com.utilitybhai" />
 
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #09090b;
+      --bg-card: #121215;
+      --bg-card-hover: #18181c;
+      --border: #27272a;
+      --border-subtle: #1f1f23;
+      --text: #f4f4f5;
+      --text-muted: #a1a1aa;
+      --primary: #ffffff;
+      --primary-inverse: #000000;
+      --accent: #3b82f6;
+      --green: #22c55e;
+      --purple: #a855f7;
+      --orange: #f97316;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header / Nav */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(9, 9, 11, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-badge {
+      background: #ffffff;
+      color: #000000;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .nav-btn {
+      background: var(--primary);
+      color: var(--primary-inverse);
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 90px 0 60px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--green);
+    }
+
+    .hero h1 {
+      font-size: 54px;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      max-width: 840px;
+      margin: 0 auto 20px;
+      background: linear-gradient(180deg, #ffffff 40%, #a1a1aa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+    }
+
+    .hero-cta {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-playstore {
+      background: #000;
+      border: 1px solid #3f3f46;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn-playstore:hover {
+      background: #18181b;
+      border-color: #52525b;
+      transform: translateY(-2px);
+    }
+
+    .btn-playstore svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .app-meta {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-top: 40px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .app-meta span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Categories / Features Grid */
+    .section-title {
+      text-align: center;
+      margin: 80px 0 16px;
+    }
+
+    .section-title h2 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-top: 6px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      background: var(--bg-card-hover);
+      border-color: #3f3f46;
+      transform: translateY(-3px);
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .card p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      color: #d4d4d8;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    /* Privacy & Features Banner */
+    .banner {
+      margin: 80px 0 40px;
+      background: linear-gradient(135deg, #18181b 0%, #09090b 100%);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 48px 36px;
+      text-align: center;
+    }
+
+    .banner h2 {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .banner p {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 28px;
+      font-size: 15px;
+    }
+
+    /* FAQ */
+    .faq-wrapper {
+      max-width: 720px;
+      margin: 40px auto 80px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 18px 0;
+    }
+
+    .faq-item summary {
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: "+";
+      font-size: 20px;
+      color: var(--text-muted);
+    }
+
+    .faq-item[open] summary::after {
+      content: "−";
+    }
+
+    .faq-item p {
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 16px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 36px;
+      }
+      .hero p {
+        font-size: 16px;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .banner {
+        padding: 32px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="#" class="logo">
+        <div class="logo-badge">UB</div>
+        <span>UtilityBhai</span>
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.utilitybhai" target="_blank" class="nav-btn">
+        <span>Get on Google Play</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        40+ Utilities in 1 Superfast App
+      </div>
+
+      <h1>Your All-in-One Daily Utilities Toolkit</h1>
+      <p>
+        PDF tools, smart financial calculators, offline unit & currency converters, QR generator & document scanners — built for pure speed and 100% privacy.
+      </p>
+
+      <div class="hero-cta">
+        <a href="https://play.google.com/store/apps/details?id=com.utilitybhai" target="_blank" class="btn-playstore">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3.609 1.814L13.792 12 3.61 22.186a2.41 2.41 0 0 1-.61-.986V2.8c0-.37.218-.72.609-.986zm11.235 11.238l2.584 2.585-11.8 6.784 9.216-9.369zm0-2.104L5.627 1.58l11.8 6.783-2.583 2.585zm1.488 1.487l3.864 2.22c.8.46.8 1.213 0 1.673l-3.864 2.22-2.13-2.13 2.13-1.983z"/>
+          </svg>
+          <div style="text-align: left;">
+            <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.75;">GET IT ON</div>
+            <div style="font-size: 15px; font-weight: 700; line-height: 1;">Google Play</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="app-meta">
+        <span>⚡ 100% Offline Capable</span>
+        <span>🔒 Zero Data Collection</span>
+        <span>🚫 No Annoying Ads</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="container">
+    <div class="section-title">
+      <h2>Everything You Need in One Place</h2>
+      <p>No need to install 20 different apps. UtilityBhai has you covered.</p>
+    </div>
+
+    <div class="grid">
+      <!-- Feature 1: PDF Tools -->
+      <div class="card">
+        <div class="card-icon">📄</div>
+        <h3>PDF & Document Suite</h3>
+        <p>Compress PDF without quality loss, merge multiple files, split pages, lock/unlock passwords, and convert Image to PDF in 1 tap.</p>
+        <div class="card-tags">
+          <span class="tag">Compress PDF</span>
+          <span class="tag">Merge & Split</span>
+          <span class="tag">Image to PDF</span>
+          <span class="tag">Password Protect</span>
+        </div>
+      </div>
+
+      <!-- Feature 2: Calculators -->
+      <div class="card">
+        <div class="card-icon">🧮</div>
+        <h3>Financial & Standard Calculators</h3>
+        <p>Calculate EMI, SIP returns, GST breakdown, Loan amortization, Discount, Age, and general calculations with zero lag.</p>
+        <div class="card-tags">
+          <span class="tag">EMI & Loan</span>
+          <span class="tag">SIP Calculator</span>
+          <span class="tag">GST Calculator</span>
+          <span class="tag">Age & BMI</span>
+        </div>
+      </div>
+
+      <!-- Feature 3: Converters -->
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <h3>Unit & Currency Converter</h3>
+        <p>Instant conversions for 150+ global currencies (with offline support) and comprehensive unit dimensions (Length, Weight, Speed, etc.).</p>
+        <div class="card-tags">
+          <span class="tag">150+ Currencies</span>
+          <span class="tag">Length & Weight</span>
+          <span class="tag">Temperature</span>
+          <span class="tag">Offline Rates</span>
+        </div>
+      </div>
+
+      <!-- Feature 4: QR & Barcode -->
+      <div class="card">
+        <div class="card-icon">📱</div>
+        <h3>QR & Barcode Studio</h3>
+        <p>Create clean, scannable UPI payment QRs, Wi-Fi keys, URLs, and official barcodes. Scan barcodes instantly with live camera.</p>
+        <div class="card-tags">
+          <span class="tag">UPI Payment QR</span>
+          <span class="tag">Barcode Scanner</span>
+          <span class="tag">Wi-Fi & URLs</span>
+          <span class="tag">Custom Styling</span>
+        </div>
+      </div>
+
+      <!-- Feature 5: Image Tools -->
+      <div class="card">
+        <div class="card-icon">🖼️</div>
+        <h3>Image Processing Hub</h3>
+        <p>Compress image file sizes for forms, enhance clarity, remove backgrounds, crop, and convert between JPG, PNG & WebP formats.</p>
+        <div class="card-tags">
+          <span class="tag">Image Compress</span>
+          <span class="tag">Format Converter</span>
+          <span class="tag">Enhancer</span>
+          <span class="tag">Document Scanner</span>
+        </div>
+      </div>
+
+      <!-- Feature 6: Internet & Security -->
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <h3>Internet & Utilities</h3>
+        <p>Inspect suspicious links before opening with the URL Safety Checker, find your device IP details, and inspect scanned codes safely.</p>
+        <div class="card-tags">
+          <span class="tag">URL Safety Checker</span>
+          <span class="tag">IP Lookup</span>
+          <span class="tag">Safe Navigation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Banner / Download CTA -->
+  <section class="container">
+    <div class="banner">
+      <h2>Ready to simplify your daily phone tasks?</h2>
+      <p>Download UtilityBhai today and get instant access to 40+ lightweight, offline utility tools.</p>
+      <a href="https://play.google.com/store/apps/details?id=com.utilitybhai" target="_blank" class="nav-btn" style="padding: 12px 28px; font-size: 15px;">
+        Download UtilityBhai on Google Play →
+      </a>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="container">
+    <div class="section-title">
+      <h2>Frequently Asked Questions</h2>
+    </div>
+
+    <div class="faq-wrapper">
+      <details class="faq-item">
+        <summary>Does UtilityBhai work without internet?</summary>
+        <p>Yes! Over 90% of UtilityBhai tools (PDF compression, calculators, unit conversions, QR code generator) work 100% offline without requiring an active internet connection.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Are my documents and photos secure?</summary>
+        <p>All document processing, PDF creation, and image modifications happen entirely locally on your device. None of your sensitive documents or photos are uploaded to external servers.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is the app free to use?</summary>
+        <p>Yes, UtilityBhai provides daily utility features with a clean, privacy-focused experience.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://play.google.com/store/apps/details?id=com.utilitybhai" target="_blank">Google Play</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+      <p>&copy; 2026 UtilityBhai. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
