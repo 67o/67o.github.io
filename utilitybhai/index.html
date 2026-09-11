@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UtilityBhai - All-in-One Daily Utility Tools & Privacy-First App</title>
+  <title>UtilityBhai - All-in-One Daily Utility Tools & Productivity App</title>
   <meta name="description" content="UtilityBhai is your all-in-one daily utilities companion with 40+ offline tools including PDF tools, calculators, currency converters, QR code generator & scanner." />
   <meta name="keywords" content="UtilityBhai, all in one utilities, pdf tools, calculator, unit converter, currency converter, qr code generator, offline utility app" />
   
@@ -95,6 +95,24 @@
       justify-content: center;
       font-size: 16px;
       font-weight: 900;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
     }
 
     .nav-btn {
@@ -402,6 +420,9 @@
       .banner {
         padding: 32px 20px;
       }
+      .nav-link {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -414,9 +435,12 @@
         <div class="logo-badge">UB</div>
         <span>UtilityBhai</span>
       </a>
-      <a href="https://play.google.com/store/apps/details?id=com.utilitybhai" target="_blank" class="nav-btn">
-        <span>Get on Google Play</span>
-      </a>
+      <div class="nav-right">
+        <a href="https://sites.google.com/view/utilitybhailegal/home" target="_blank" class="nav-link">Privacy & Legal</a>
+        <a href="https://play.google.com/store/apps/details?id=com.utilitybhai" target="_blank" class="nav-btn">
+          <span>Get on Google Play</span>
+        </a>
+      </div>
     </div>
   </header>
 
@@ -430,7 +454,7 @@
 
       <h1>Your All-in-One Daily Utilities Toolkit</h1>
       <p>
-        PDF tools, smart financial calculators, offline unit & currency converters, QR generator & document scanners — built for pure speed and 100% privacy.
+        PDF tools, smart financial calculators, offline unit & currency converters, QR generator & document scanner — built for speed and everyday convenience.
       </p>
 
       <div class="hero-cta">
@@ -447,145 +471,5 @@
 
       <div class="app-meta">
         <span>⚡ 100% Offline Capable</span>
-        <span>🔒 Zero Data Collection</span>
-        <span>🚫 No Annoying Ads</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Features Grid -->
-  <section class="container">
-    <div class="section-title">
-      <h2>Everything You Need in One Place</h2>
-      <p>No need to install 20 different apps. UtilityBhai has you covered.</p>
-    </div>
-
-    <div class="grid">
-      <!-- Feature 1: PDF Tools -->
-      <div class="card">
-        <div class="card-icon">📄</div>
-        <h3>PDF & Document Suite</h3>
-        <p>Compress PDF without quality loss, merge multiple files, split pages, lock/unlock passwords, and convert Image to PDF in 1 tap.</p>
-        <div class="card-tags">
-          <span class="tag">Compress PDF</span>
-          <span class="tag">Merge & Split</span>
-          <span class="tag">Image to PDF</span>
-          <span class="tag">Password Protect</span>
-        </div>
-      </div>
-
-      <!-- Feature 2: Calculators -->
-      <div class="card">
-        <div class="card-icon">🧮</div>
-        <h3>Financial & Standard Calculators</h3>
-        <p>Calculate EMI, SIP returns, GST breakdown, Loan amortization, Discount, Age, and general calculations with zero lag.</p>
-        <div class="card-tags">
-          <span class="tag">EMI & Loan</span>
-          <span class="tag">SIP Calculator</span>
-          <span class="tag">GST Calculator</span>
-          <span class="tag">Age & BMI</span>
-        </div>
-      </div>
-
-      <!-- Feature 3: Converters -->
-      <div class="card">
-        <div class="card-icon">🔄</div>
-        <h3>Unit & Currency Converter</h3>
-        <p>Instant conversions for 150+ global currencies (with offline support) and comprehensive unit dimensions (Length, Weight, Speed, etc.).</p>
-        <div class="card-tags">
-          <span class="tag">150+ Currencies</span>
-          <span class="tag">Length & Weight</span>
-          <span class="tag">Temperature</span>
-          <span class="tag">Offline Rates</span>
-        </div>
-      </div>
-
-      <!-- Feature 4: QR & Barcode -->
-      <div class="card">
-        <div class="card-icon">📱</div>
-        <h3>QR & Barcode Studio</h3>
-        <p>Create clean, scannable UPI payment QRs, Wi-Fi keys, URLs, and official barcodes. Scan barcodes instantly with live camera.</p>
-        <div class="card-tags">
-          <span class="tag">UPI Payment QR</span>
-          <span class="tag">Barcode Scanner</span>
-          <span class="tag">Wi-Fi & URLs</span>
-          <span class="tag">Custom Styling</span>
-        </div>
-      </div>
-
-      <!-- Feature 5: Image Tools -->
-      <div class="card">
-        <div class="card-icon">🖼️</div>
-        <h3>Image Processing Hub</h3>
-        <p>Compress image file sizes for forms, enhance clarity, remove backgrounds, crop, and convert between JPG, PNG & WebP formats.</p>
-        <div class="card-tags">
-          <span class="tag">Image Compress</span>
-          <span class="tag">Format Converter</span>
-          <span class="tag">Enhancer</span>
-          <span class="tag">Document Scanner</span>
-        </div>
-      </div>
-
-      <!-- Feature 6: Internet & Security -->
-      <div class="card">
-        <div class="card-icon">🌐</div>
-        <h3>Internet & Utilities</h3>
-        <p>Inspect suspicious links before opening with the URL Safety Checker, find your device IP details, and inspect scanned codes safely.</p>
-        <div class="card-tags">
-          <span class="tag">URL Safety Checker</span>
-          <span class="tag">IP Lookup</span>
-          <span class="tag">Safe Navigation</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Banner / Download CTA -->
-  <section class="container">
-    <div class="banner">
-      <h2>Ready to simplify your daily phone tasks?</h2>
-      <p>Download UtilityBhai today and get instant access to 40+ lightweight, offline utility tools.</p>
-      <a href="https://play.google.com/store/apps/details?id=com.utilitybhai" target="_blank" class="nav-btn" style="padding: 12px 28px; font-size: 15px;">
-        Download UtilityBhai on Google Play →
-      </a>
-    </div>
-  </section>
-
-  <!-- FAQ Section -->
-  <section class="container">
-    <div class="section-title">
-      <h2>Frequently Asked Questions</h2>
-    </div>
-
-    <div class="faq-wrapper">
-      <details class="faq-item">
-        <summary>Does UtilityBhai work without internet?</summary>
-        <p>Yes! Over 90% of UtilityBhai tools (PDF compression, calculators, unit conversions, QR code generator) work 100% offline without requiring an active internet connection.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Are my documents and photos secure?</summary>
-        <p>All document processing, PDF creation, and image modifications happen entirely locally on your device. None of your sensitive documents or photos are uploaded to external servers.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Is the app free to use?</summary>
-        <p>Yes, UtilityBhai provides daily utility features with a clean, privacy-focused experience.</p>
-      </details>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-links">
-        <a href="https://play.google.com/store/apps/details?id=com.utilitybhai" target="_blank">Google Play</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-      </div>
-      <p>&copy; 2026 UtilityBhai. All rights reserved.</p>
-    </div>
-  </footer>
-
-</body>
-</html>
+        <span>🔒 Secure On-Device Processing</span>
+        <span>📱
