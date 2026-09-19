@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niyamam – Daily Routine & Habit Tracker App</title>
+    
+    <!-- Meta SEO & Social Tags -->
+    <meta name="description" content="Build unshakable discipline and daily habits with Niyamam. Smart voice reminders, exact routine alarms, streak tracking, and privacy-first design.">
+    <meta name="keywords" content="Niyamam, habit tracker, daily routine app, routine reminder, discipline app, streak tracker, voice reminder">
+    <meta name="theme-color" content="#10b981">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Niyamam – Daily Routine App">
+    <meta property="og:description" content="Master your day with voice reminders, exact routine alarms, and habit streaks.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://play.google.com/store/apps/details?id=com.niyamam">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #10b981;
+            --primary-dark: #059669;
+            --primary-light: #d1fae5;
+            --accent-gold: #f59e0b;
+            --indigo-accent: #6366f1;
+            --bg-dark: #090d16;
+            --bg-card: rgba(18, 24, 38, 0.85);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Ambient Glow Backgrounds */
+        .glow-sphere {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.45;
+        }
+
+        .glow-1 {
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            top: -100px;
+            left: -100px;
+        }
+
+        .glow-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--indigo-accent) 0%, transparent 70%);
+            top: 40%;
+            right: -150px;
+        }
+
+        /* Navbar */
+        header {
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(16px);
+            background: rgba(9, 13, 22, 0.75);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.4rem;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-badge {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), #047857);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: #ffffff;
+            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(16, 185, 129, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 24px 60px;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .hero-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 100px;
+            color: #34d399;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero-title {
+            font-size: 3.4rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, #34d399 0%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 36px;
+            max-width: 520px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 36px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 24px;
+        }
+
+        .stat-item h4 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .stat-item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Mockup Card */
+        .mockup-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .phone-frame {
+            width: 320px;
+            background: #151c2e;
+            border: 8px solid #232d42;
+            border-radius: 44px;
+            padding: 20px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(16, 185, 129, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mock-app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .mock-logo {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #34d399;
+        }
+
+        .mock-routine-card {
+            background: rgba(30, 41, 59, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 14px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: transform 0.2s;
+        }
+
+        .mock-check {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(16, 185, 129, 0.2);
+            border: 2px solid #10b981;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 0.8rem;
+        }
+
+        .mock-check.done {
+            background: #10b981;
+        }
+
+        .mock-info h5 {
+            font-size: 0.9rem;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .mock-info span {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .mock-banner {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(16, 185, 129, 0.15));
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 14px;
+            padding: 12px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #fef08a;
+            margin-top: 16px;
+        }
+
+        /* Features Section */
+        .section-header {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 60px;
+            padding: 0 24px;
+        }
+
+        .section-header h2 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 14px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(16, 185, 129, 0.35);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(16, 185, 129, 0.1);
+        }
+
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: rgba(16, 185, 129, 0.12);
+            color: #34d399;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto 100px;
+            padding: 0 24px;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.05rem;
+            user-select: none;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s;
+            color: var(--primary);
+        }
+
+        .faq-answer {
+            padding: 0 24px 20px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            display: none;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* CTA Banner */
+        .cta-box {
+            max-width: 1100px;
+            margin: 0 auto 100px;
+            padding: 60px 32px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(99, 102, 241, 0.15) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 28px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .cta-box p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 550px;
+            margin: 0 auto 32px;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            background: #060910;
+            padding: 48px 24px 32px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #34d399;
+        }
+
+        .copyright {
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-top: 40px;
+            }
+
+            .hero-desc {
+                margin: 0 auto 32px;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-title {
+                font-size: 2.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ambient Glows -->
+    <div class="glow-sphere glow-1"></div>
+    <div class="glow-sphere glow-2"></div>
+
+    <!-- Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="brand-logo">
+                <div class="logo-badge">🌱</div>
+                <span>Niyamam</span>
+            </a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#faq">FAQ</a>
+                <a href="https://sites.google.com/view/niyamam-legal/home" target="_blank" rel="noopener">Privacy & Legal</a>
+                <a href="https://play.google.com/store/apps/details?id=com.niyamam" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.88rem;">
+                    <i class="fa-brands fa-google-play"></i> Get App
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-pill">
+                    <i class="fa-solid fa-sparkles"></i> Build Unbreakable Daily Discipline
+                </div>
+                <h1 class="hero-title">
+                    Master Your Day with <span>Niyamam</span>
+                </h1>
+                <p class="hero-desc">
+                    The ultra-fast, offline-first daily routine and habit tracking app. Get spoken voice reminders, precise alarms, and streak motivation to reach your highest potential.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="https://play.google.com/store/apps/details?id=com.niyamam" target="_blank" rel="noopener" class="btn btn-primary">
+                        <i class="fa-brands fa-google-play" style="font-size: 1.2rem;"></i> Download on Google Play
+                    </a>
+                    <a href="https://sites.google.com/view/niyamam-legal/home" target="_blank" rel="noopener" class="btn btn-secondary">
+                        <i class="fa-solid fa-shield-halved"></i> Legal & Policy
+                    </a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h4>100% Offline</h4>
+                        <p>No Cloud / Total Privacy</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>Exact Alarms</h4>
+                        <p>Zero Battery Delay</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>Voice TTS</h4>
+                        <p>Hindi & English Speech</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phone Preview Mockup -->
+            <div class="mockup-wrapper">
+                <div class="phone-frame">
+                    <div class="mock-app-header">
+                        <div class="mock-logo">🌱 Niyamam</div>
+                        <span style="font-size: 0.75rem; color: #94a3b8;">Today</span>
+                    </div>
+
+                    <div class="mock-routine-card">
+                        <div class="mock-check done"><i class="fa-solid fa-check"></i></div>
+                        <div class="mock-info">
+                            <h5>Morning Meditation 🧘</h5>
+                            <span>06:30 AM • Completed ✅</span>
+                        </div>
+                    </div>
+
+                    <div class="mock-routine-card">
+                        <div class="mock-check done"><i class="fa-solid fa-check"></i></div>
+                        <div class="mock-info">
+                            <h5>Daily Exercise 🏃‍♂️</h5>
+                            <span>07:30 AM • Completed ✅</span>
+                        </div>
+                    </div>
+
+                    <div class="mock-routine-card" style="border-color: rgba(16, 185, 129, 0.4);">
+                        <div class="mock-check"></div>
+                        <div class="mock-info">
+                            <h5>Read Books 📚</h5>
+                            <span>09:00 PM • Pending ⏳</span>
+                        </div>
+                    </div>
+
+                    <div class="mock-banner">
+                        ✨ "Discipline is the bridge between goals and accomplishment."
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" style="padding-top: 40px;">
+            <div class="section-header">
+                <h2>Why You'll Love Niyamam</h2>
+                <p>Designed with zero distractions, no unnecessary ads, and 100% focus on building lifetime habits.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-volume-high"></i></div>
+                    <h3>Smart Voice Reminders</h3>
+                    <p>Hear your routines spoken out loud in English or Hindi with motivational quotes when it's time to act.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-bell"></i></div>
+                    <h3>Exact Timing & Offsets</h3>
+                    <p>Get notified right on time or 5/10/15 minutes before. Built using exact alarms that bypass battery sleep limits.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-fire"></i></div>
+                    <h3>Streak & Consistency Tracking</h3>
+                    <p>Watch your daily streak grow. Stay motivated with discipline scores, badges, and progress milestones.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                    <h3>Visual Calendar & History</h3>
+                    <p>Browse any date to see what you completed. Track your consistency over months with interactive heatmaps.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>100% Private & Offline</h3>
+                    <p>All your routines, streaks, and data stay on your device. No forced account registration or data tracking.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-language"></i></div>
+                    <h3>Dual Language Support</h3>
+                    <p>Switch seamlessly between English and Hindi (हिंदी) with tailored motivational quotes for your daily journey.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq-section">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Quick answers to common questions about Niyamam.</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Is Niyamam free to use?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes! Niyamam is completely free with all core habit tracking, voice reminders, and streak features available out of the box.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How do voice reminders work?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    When a routine alarm triggers, Niyamam uses the on-device Text-to-Speech engine to announce the task title and an inspiring motivational quote.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Does it need an internet connection?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    No. Niyamam operates 100% offline. All your data is safely saved in local SQLite storage on your phone.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Where can I read the Privacy Policy?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    You can view our complete and transparent privacy terms anytime at our official legal portal: <a href="https://sites.google.com/view/niyamam-legal/home" target="_blank" style="color: #34d399;">Niyamam Legal & Privacy Policy</a>.
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Box -->
+        <section class="cta-box">
+            <h2>Ready to Transform Your Routine?</h2>
+            <p>Download Niyamam today and start building the discipline you need to achieve your biggest dreams.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.niyamam" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 16px 36px; font-size: 1.1rem;">
+                <i class="fa-brands fa-google-play"></i> Get it on Google Play
+            </a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <a href="#" class="brand-logo">
+                <div class="logo-badge">🌱</div>
+                <span>Niyamam – Daily Routine App</span>
+            </a>
+            
+            <div class="footer-links">
+                <a href="https://play.google.com/store/apps/details?id=com.niyamam" target="_blank" rel="noopener">Google Play Store</a>
+                <a href="https://sites.google.com/view/niyamam-legal/home" target="_blank" rel="noopener">Privacy Policy</a>
+                <a href="https://sites.google.com/view/niyamam-legal/home" target="_blank" rel="noopener">Terms & Conditions</a>
+                <a href="#features">Features</a>
+                <a href="#faq">FAQ</a>
+            </div>
+
+            <p class="copyright">
+                © <span id="year"></span> Niyamam. All rights reserved. Built for discipline and daily consistency.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Interactive Script -->
+    <script>
+        // Set dynamic copyright year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // FAQ Accordion Toggle
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const parent = button.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
